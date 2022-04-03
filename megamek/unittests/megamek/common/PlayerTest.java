@@ -1,6 +1,7 @@
 package megamek.common;
 
 import megamek.client.ui.swing.util.PlayerColour;
+import megamek.common.enums.RatingModifier;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -9,6 +10,8 @@ import static org.junit.Assert.*;
 
 @RunWith(JUnit4.class)
 public class PlayerTest {
+    private static final int STANDARD_RATING = 1000;
+
 
     @Test
     public void testGetColorForPlayer() {
@@ -23,4 +26,24 @@ public class PlayerTest {
 
     }
 
+    @Test
+    public void testSetRatingWinner() {
+        Player player1 = new Player(1, "player1");
+        player1.updateRating(RatingModifier.WINNER.getRatingModifier());
+        assertEquals(player1.getRating(),STANDARD_RATING + RatingModifier.WINNER.getRatingModifier());
+    }
+
+    @Test
+    public void testSetRatingTeamWinner(){
+        Player player1 = new Player(1, "player1");
+        player1.updateRating(RatingModifier.TEAM_WINNER.getRatingModifier());
+        assertEquals(player1.getRating(),STANDARD_RATING + RatingModifier.TEAM_WINNER.getRatingModifier());
+    }
+
+    @Test
+    public void testSetRatingLoser(){
+        Player player1 = new Player(1, "player1");
+        player1.updateRating(RatingModifier.LOSER.getRatingModifier());
+        assertEquals(player1.getRating(),STANDARD_RATING + RatingModifier.LOSER.getRatingModifier());
+    }
 }
