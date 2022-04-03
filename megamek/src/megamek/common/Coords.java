@@ -292,12 +292,11 @@ public class Coords implements Serializable {
      * Returns a string representing a coordinate in "board number" format.
      */
     public String getBoardNum() {
-        StringBuilder num = new StringBuilder();
 
-        num.append(getX() > -1 && getX() < 9 ? "0" : "").append(getX() + 1);
-        num.append(getY() > -1 && getY() < 9 ? "0" : "").append(getY() + 1);
+        String num = (getX() > -1 && getX() < 9 ? "0" : "") + (getX() + 1) +
+                (getY() > -1 && getY() < 9 ? "0" : "") + (getY() + 1);
 
-        return num.toString();
+        return num;
     }
 
     /**

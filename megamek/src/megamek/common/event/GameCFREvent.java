@@ -121,10 +121,9 @@ public class GameCFREvent extends GameEvent {
 
     @Override
     public String toString() {
-        StringBuffer buff = new StringBuffer();
-        buff.append(getEventName());
-        buff.append(" game event ");
-        return buff.toString();
+        String buff = getEventName() +
+                " game event ";
+        return buff;
     }
 
     public int getCFRType() {

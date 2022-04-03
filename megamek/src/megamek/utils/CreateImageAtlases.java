@@ -201,7 +201,7 @@ public class CreateImageAtlases {
 
         atlasCreator.writeImgFileToAtlasMap();
 
-        try (BufferedWriter fout = new BufferedWriter(new FileWriter(new File("atlasedImages.txt")))) {
+        try (BufferedWriter fout = new BufferedWriter(new FileWriter("atlasedImages.txt"))) {
             for (String imgFile : atlasCreator.imagesStored) {
                 fout.write(imgFile);
                 fout.write("\n");

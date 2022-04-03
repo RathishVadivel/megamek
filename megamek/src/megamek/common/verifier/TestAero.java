@@ -626,30 +626,27 @@ public class TestAero extends TestEntity {
     public String printWeightMisc() {
         double weight = getWeightMisc();
         if (weight > 0) {
-            StringBuffer retVal = new StringBuffer(StringUtil.makeLength(
-                    "VSTOL equipment:", getPrintSize() - 5));
-            retVal.append(makeWeightString(weight));
-            retVal.append("\n");
-            return retVal.toString();
+            String retVal = StringUtil.makeLength(
+                    "VSTOL equipment:", getPrintSize() - 5) + makeWeightString(weight) +
+                    "\n";
+            return retVal;
         }
         return "";
     }
 
     @Override
     public String printWeightControls() {
-        StringBuffer retVal = new StringBuffer(StringUtil.makeLength(
-                aero.getCockpitTypeString() + ":", getPrintSize() - 5));
-        retVal.append(makeWeightString(getWeightControls()));
-        retVal.append("\n");
-        return retVal.toString();
+        String retVal = StringUtil.makeLength(
+                aero.getCockpitTypeString() + ":", getPrintSize() - 5) + makeWeightString(getWeightControls()) +
+                "\n";
+        return retVal;
     }
         
     public String printWeightFuel() {
-        StringBuffer retVal = new StringBuffer(StringUtil.makeLength(
-                "Fuel: ", getPrintSize() - 5));
-        retVal.append(makeWeightString(getWeightFuel()));
-        retVal.append("\n");
-        return retVal.toString();
+        String retVal = StringUtil.makeLength(
+                "Fuel: ", getPrintSize() - 5) + makeWeightString(getWeightFuel()) +
+                "\n";
+        return retVal;
     }
 
     public Aero getAero() {

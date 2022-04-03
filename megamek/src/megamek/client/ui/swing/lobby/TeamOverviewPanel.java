@@ -263,17 +263,17 @@ public class TeamOverviewPanel extends JPanel {
         }
         
         private String unitSummary(int[] counts, boolean[] criticals, boolean[] warnings) {
-            String result = ""; 
+            StringBuilder result = new StringBuilder();
             for (int i = 0; i < counts.length; i++) {
                 if (counts[i] > 0) {
-                    result += criticals[i] ? criticalSign() + " ": "";
-                    result += warnings[i] ? warningSign() + " ": "";
-                    result += Messages.getString("ChatLounge.teamOverview.unitSum" + i) + " " + counts[i];
-                    result += "<BR>";
+                    result.append(criticals[i] ? criticalSign() + " " : "");
+                    result.append(warnings[i] ? warningSign() + " " : "");
+                    result.append(Messages.getString("ChatLounge.teamOverview.unitSum" + i)).append(" ").append(counts[i]);
+                    result.append("<BR>");
                 }
                 
             }
-            return result;
+            return result.toString();
         }
         
         /** Finds and sets the required row height (max height of all cells plus margin). */

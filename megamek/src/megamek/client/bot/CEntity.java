@@ -1486,9 +1486,7 @@ public class CEntity {
                     || (linked_ammo == AmmoType.T_AC_LBX_THB)) {
                 damage_value = hits_by_racksize[rack_size];
 
-                for (int i = 0; i < raw_damage_array.length; i++) {
-                    raw_damage_array[i] = damage_value;
-                }
+                Arrays.fill(raw_damage_array, damage_value);
             }
 
             // Ultra and rotary cannons return damage values properly
@@ -1499,9 +1497,7 @@ public class CEntity {
 
                 damage_value *= hits_by_racksize[rack_size];
 
-                for (int i = 0; i < raw_damage_array.length; i++) {
-                    raw_damage_array[i] = damage_value;
-                }
+                Arrays.fill(raw_damage_array, damage_value);
             }
 
         } else {
@@ -1521,9 +1517,7 @@ public class CEntity {
 
                 damage_value = 12.0;
 
-                for (int i = 0; i < raw_damage_array.length; i++) {
-                    raw_damage_array[i] = damage_value;
-                }
+                Arrays.fill(raw_damage_array, damage_value);
 
             }
 
@@ -1532,9 +1526,7 @@ public class CEntity {
 
                 damage_value = 10.5;
 
-                for (int i = 0; i < raw_damage_array.length; i++) {
-                    raw_damage_array[i] = damage_value;
-                }
+                Arrays.fill(raw_damage_array, damage_value);
 
             }
 
@@ -1544,9 +1536,7 @@ public class CEntity {
                     || (wt.getAmmoType() == AmmoType.T_TBOLT_15)
                     || (wt.getAmmoType() == AmmoType.T_TBOLT_20)) {
 
-                for (int i = 0; i < raw_damage_array.length; i++) {
-                    raw_damage_array[i] = damage_value;
-                }
+                Arrays.fill(raw_damage_array, damage_value);
                 raw_damage_array[0] = damage_value / 2.0;
 
             }

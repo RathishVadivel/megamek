@@ -1082,13 +1082,13 @@ public class WeaponHandler implements AttackHandler, Serializable {
                         int priority = 1;
                         EquipmentMode mode = (weapon.curMode());
                         if (mode != null) {
-                            if (mode.getName() == "1-shot") {
+                            if (mode.getName().equals("1-shot")) {
                                 priority = 1;
-                            } else if (mode.getName() == "2-shot") {
+                            } else if (mode.getName().equals("2-shot")) {
                                 priority = 2;
-                            } else if (mode.getName() == "3-shot") {
+                            } else if (mode.getName().equals("3-shot")) {
                                 priority = 3;
-                            } else if (mode.getName() == "4-shot") {
+                            } else if (mode.getName().equals("4-shot")) {
                                 priority = 4;
                             }
                         }

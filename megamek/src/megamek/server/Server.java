@@ -35497,27 +35497,27 @@ public class Server implements Runnable {
             conn.setDoOutput(true);
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             DataOutputStream printout = new DataOutputStream(conn.getOutputStream());
-            String content;
-            content = "port=" + URLEncoder.encode(Integer.toString(serverSocket.getLocalPort()), StandardCharsets.UTF_8);
+            StringBuilder content;
+            content = new StringBuilder("port=" + URLEncoder.encode(Integer.toString(serverSocket.getLocalPort()), StandardCharsets.UTF_8));
             if (register) {
                 for (AbstractConnection iconn : connections) {
-                    content += "&players[]=" + (getPlayer(iconn.getId()).getName());
+                    content.append("&players[]=").append(getPlayer(iconn.getId()).getName());
                 }
                 if ((game.getPhase() != GamePhase.LOUNGE)
                         && (game.getPhase() != GamePhase.UNKNOWN)) {
-                    content += "&close=yes";
+                    content.append("&close=yes");
                 }
-                content += "&version=" + MMConstants.VERSION;
+                content.append("&version=").append(MMConstants.VERSION);
                 if (isPassworded()) {
-                    content += "&pw=yes";
+                    content.append("&pw=yes");
                 }
             } else {
-                content += "&delete=yes";
+                content.append("&delete=yes");
             }
             if (serverAccessKey != null) {
-                content += "&key=" + serverAccessKey;
+                content.append("&key=").append(serverAccessKey);
             }
-            printout.writeBytes(content);
+            printout.writeBytes(content.toString());
             printout.flush();
             BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line;

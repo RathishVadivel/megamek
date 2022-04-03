@@ -184,10 +184,10 @@ public abstract class PicMap extends JComponent {
      */
 
     public void setContentMargins(int l, int t, int r, int b) {
-        leftMargin = (l < 0) ? 0 : l;
-        topMargin = (t < 0) ? 0 : t;
-        rightMargin = (r < 0) ? 0 : r;
-        bottomMargin = (b < 0) ? 0 : b;
+        leftMargin = Math.max(l, 0);
+        topMargin = Math.max(t, 0);
+        rightMargin = Math.max(r, 0);
+        bottomMargin = Math.max(b, 0);
         Rectangle rect = rootGroup.getBounds();
         rootGroup.translate(leftMargin - rect.x, topMargin - rect.y);
 

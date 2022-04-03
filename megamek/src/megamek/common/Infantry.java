@@ -790,7 +790,7 @@ public class Infantry extends Entity {
         if (!isPlatoon()) {
             return super.getInternalRemainingPercent();
         }
-        int menTotal = men > 0 ? men : 0; // Handle "DESTROYED"
+        int menTotal = Math.max(men, 0); // Handle "DESTROYED"
         return ((double) menTotal / menStarting);
     }
 

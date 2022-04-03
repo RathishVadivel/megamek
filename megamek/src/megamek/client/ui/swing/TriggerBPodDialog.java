@@ -144,10 +144,9 @@ public class TriggerBPodDialog extends JDialog implements ActionListener {
             // Is this an Anti-BA Pod?
             if (mount.getType().hasFlag(WeaponType.F_B_POD)) {
                 // Create a checkbox for the pod, and add it to the panel.
-                StringBuffer message = new StringBuffer();
-                message.append(entity.getLocationName(mount.getLocation()))
-                        .append(' ').append(mount.getName());
-                JCheckBox pod = new JCheckBox(message.toString());
+                String message = entity.getLocationName(mount.getLocation()) +
+                        ' ' + mount.getName();
+                JCheckBox pod = new JCheckBox(message);
                 panPods.add(pod);
 
                 // Can the entity fire the pod?

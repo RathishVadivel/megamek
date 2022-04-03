@@ -215,7 +215,7 @@ public class PhysicalDisplay extends StatusBarPhaseDisplay {
         clientgui.getBoardView().centerOnHex(entity.getPosition());
 
         // does it have a club?
-        String clubLabel = null;
+        StringBuilder clubLabel = null;
         for (Mounted club : entity.getClubs()) {
             String thisLab;
             if (club.getName().endsWith("Club")) {
@@ -224,15 +224,15 @@ public class PhysicalDisplay extends StatusBarPhaseDisplay {
                 thisLab = club.getName();
             }
             if (clubLabel == null) {
-                clubLabel = thisLab;
+                clubLabel = new StringBuilder(thisLab);
             } else {
-                clubLabel = clubLabel + "/" + thisLab;
+                clubLabel.append("/").append(thisLab);
             }
         }
         if (clubLabel == null) {
-            clubLabel = Messages.getString("PhysicalDisplay.Club");
+            clubLabel = new StringBuilder(Messages.getString("PhysicalDisplay.Club"));
         }
-        buttons.get(PhysicalCommand.PHYSICAL_CLUB).setText(clubLabel);
+        buttons.get(PhysicalCommand.PHYSICAL_CLUB).setText(clubLabel.toString());
 
         if ((entity instanceof Mech)
             && !entity.isProne()

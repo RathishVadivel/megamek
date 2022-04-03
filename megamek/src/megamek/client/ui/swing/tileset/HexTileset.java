@@ -518,7 +518,7 @@ public class HexTileset implements BoardListener {
         }
 
         // check theme
-        if ((com.getTheme() == org.getTheme())
+        if ((com.getTheme().equals(org.getTheme()))
                 || ((com.getTheme() != null) && com.getTheme().equalsIgnoreCase(org.getTheme()))) {
             theme = 1.0;
         } else if ((org.getTheme() != null) && (com.getTheme() == null)) {

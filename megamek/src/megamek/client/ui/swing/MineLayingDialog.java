@@ -76,11 +76,10 @@ public class MineLayingDialog extends JDialog implements ActionListener {
             if ((type.hasFlag(MiscType.F_MINE) || 
                     type.hasFlag(MiscType.F_VEHICLE_MINE_DISPENSER)) && 
                  mount.canFire()) {
-                StringBuffer message = new StringBuffer();
-                message.append(entity.getLocationName(mount.getLocation()))
-                        .append(' ')
-                        .append(mount.getDesc());
-                chMines.addItem(message.toString());
+                String message = entity.getLocationName(mount.getLocation()) +
+                        ' ' +
+                        mount.getDesc();
+                chMines.addItem(message);
                 vMines.add(mount);
 
             } // End found-mine

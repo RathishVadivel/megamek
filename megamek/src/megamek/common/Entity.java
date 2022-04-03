@@ -9461,19 +9461,19 @@ public abstract class Entity extends TurnOrdered implements Transporter, Targeta
             return "No location given.";
         }
 
-        String str = getLocationName(loc) + " (" + getLocationAbbr(loc)
-               + "): Armor: " + getArmorString(loc) + "/" + getOArmor(loc)
-               + " Structure: " + getInternalString(loc) + "/"
-               + getOInternal(loc) + "\n ";
+        StringBuilder str = new StringBuilder(getLocationName(loc) + " (" + getLocationAbbr(loc)
+                + "): Armor: " + getArmorString(loc) + "/" + getOArmor(loc)
+                + " Structure: " + getInternalString(loc) + "/"
+                + getOInternal(loc) + "\n ");
         for (CriticalSlot cs : crits[loc]) {
             if (cs != null) {
                 Mounted mount = cs.getMount();
                 if (mount != null) {
-                    str += mount.getDesc() + "\n ";
+                    str.append(mount.getDesc()).append("\n ");
                 }
             }
         }
-        return str;
+        return str.toString();
     }
 
     /**
@@ -12845,7 +12845,7 @@ public abstract class Entity extends TurnOrdered implements Transporter, Targeta
         int modifier = impThisTurn + impLastTurn;
         modifier = modifier - (modifier % 3);
         modifier = modifier / 3;
-        return (modifier > max) ? max : modifier;
+        return Math.min(modifier, max);
     }
 
     /**

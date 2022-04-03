@@ -914,9 +914,8 @@ public class EquipChoicePanel extends JPanel {
                     String manipName = manip.getName() + " ("
                             + manip.getTonnage(entity) + "kg)";
                     m_choice.addItem(manipName);
-                    if (curType != null && 
-                            manip.getInternalName() == 
-                                curType.getInternalName()) {
+                    if (curType != null &&
+                            manip.getInternalName().equals(curType.getInternalName())) {
                         m_choice.setSelectedIndex(x);
                     }
                 }

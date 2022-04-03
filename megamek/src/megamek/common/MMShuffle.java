@@ -85,20 +85,20 @@ public class MMShuffle extends Roll {
     @Override
     public String toString() {
         // Build a buffer as we go.
-        StringBuffer buffer = new StringBuffer();
 
         // Start off the report (this is all the report a single die needs).
-        buffer.append(this.one + this.two);
 
-        // Add the two "dice".
-        buffer.append(" (");
-        buffer.append(this.one);
-        buffer.append("+");
-        buffer.append(this.two);
-        buffer.append(")");
+        String buffer = (this.one + this.two) +
+
+                // Add the two "dice".
+                " (" +
+                this.one +
+                "+" +
+                this.two +
+                ")";
 
         // Return the string.
-        return buffer.toString();
+        return buffer;
     }
 
     /**
@@ -111,27 +111,27 @@ public class MMShuffle extends Roll {
     public String getReport() {
 
         // Build a buffer as we go.
-        StringBuffer buffer = new StringBuffer();
 
         // Include the id.
-        buffer.append("Roll #").append(this.id).append(" - range: [").append(1)
-                .append(",").append(6).append("], result: ").append(
-                        this.one + this.two);
 
-        // Report the two "dice".
-        buffer.append(", rolls: ");
-        buffer.append(this.one);
-        buffer.append(", ");
-        buffer.append(this.two);
+        String buffer = "Roll #" + this.id + " - range: [" + 1 +
+                "," + 6 + "], result: " +
+                (this.one + this.two) +
 
-        // Now report the order of the shuffle.
-        buffer.append(", deal #");
-        buffer.append(this.deal);
-        buffer.append(" of shuffle #");
-        buffer.append(this.shuffle);
+                // Report the two "dice".
+                ", rolls: " +
+                this.one +
+                ", " +
+                this.two +
+
+                // Now report the order of the shuffle.
+                ", deal #" +
+                this.deal +
+                " of shuffle #" +
+                this.shuffle;
 
         // Return the string.
-        return buffer.toString();
+        return buffer;
     }
 
     /**

@@ -2108,9 +2108,7 @@ public class WeaponPanel extends PicMap implements ListSelectionListener, Action
     }
 
     private String formatBayWeapon(Mounted m) {
-        StringBuffer sb = new StringBuffer(64);
-        sb.append(m.getDesc());
-        return sb.toString();
+        return m.getDesc();
     }
 
     /**

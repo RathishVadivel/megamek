@@ -303,22 +303,22 @@ public class AeroMapSet implements DisplayMapSet {
     }
 
     private String getCriticalHitTally(int tally, int max) {
-        String marks = "";
+        StringBuilder marks = new StringBuilder();
 
         if (tally < 1) {
-            return marks;
+            return marks.toString();
         }
 
         if (tally >= max) {
-            marks = "Out";
-            return marks;
+            marks = new StringBuilder("Out");
+            return marks.toString();
         }
 
         while (tally > 0) {
-            marks = marks + "X";
+            marks.append("X");
             tally--;
         }
 
-        return marks;
+        return marks.toString();
     }
 }

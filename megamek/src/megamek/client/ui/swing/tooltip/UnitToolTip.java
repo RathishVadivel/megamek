@@ -367,9 +367,9 @@ public final class UnitToolTip {
                 } else {
                     ranges = wtype.getRanges(curWp);
                 } 
-                String rangeString = " \u22EF ";
+                StringBuilder rangeString = new StringBuilder(" \u22EF ");
                 if (ranges[RangeType.RANGE_MINIMUM] > 0) {
-                    rangeString += "(" + ranges[RangeType.RANGE_MINIMUM] + ") ";
+                    rangeString.append("(").append(ranges[RangeType.RANGE_MINIMUM]).append(") ");
                 }
                 int maxRange = RangeType.RANGE_LONG;
                 if (entity.getGame().getOptions().booleanOption(
@@ -377,15 +377,15 @@ public final class UnitToolTip {
                     maxRange = RangeType.RANGE_EXTREME;
                 }
                 for (int i = RangeType.RANGE_SHORT; i <= maxRange; i++) {
-                    rangeString += ranges[i];
+                    rangeString.append(ranges[i]);
                     if (i != maxRange) {
-                        rangeString += "\u2B1D";
+                        rangeString.append("\u2B1D");
                     }
                 }
                 WeaponType wpT = ((WeaponType) curWp.getType());
                 if (!wpT.hasFlag(WeaponType.F_AMS)
                         || entity.getGame().getOptions().booleanOption(OptionsConstants.ADVCOMBAT_TACOPS_MANUAL_AMS)) {
-                    currentWp.range = rangeString;
+                    currentWp.range = rangeString.toString();
                 }
 
                 currentWp.isClan = wpT.isClan();

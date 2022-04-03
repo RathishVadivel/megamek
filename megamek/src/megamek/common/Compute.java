@@ -3042,8 +3042,8 @@ public class Compute {
         // weapons too
 
         if (attacker instanceof BattleArmor) {
-            if ((wt.getInternalName() != Infantry.SWARM_MEK)
-                && (wt.getInternalName() != Infantry.LEG_ATTACK)) {
+            if ((!wt.getInternalName().equals(Infantry.SWARM_MEK))
+                && (!wt.getInternalName().equals(Infantry.LEG_ATTACK))) {
                 use_table = true;
             }
         }
@@ -3301,7 +3301,7 @@ public class Compute {
             // Infantry follow some special rules, but do fixed amounts of damage
             // Anti-mek attacks are weapon-like in nature, so include them here as well
             if (attacker instanceof Infantry) {
-                if (wt.getInternalName() == Infantry.LEG_ATTACK) {
+                if (wt.getInternalName().equals(Infantry.LEG_ATTACK)) {
                     fDamage = 20.0f; // Actually 5, but the chance of crits
                     // deserves a boost
                 // leg attacks are mutually exclusive with swarm attacks, 
@@ -3309,7 +3309,7 @@ public class Compute {
                     boolean targetIsSwarmable = (target instanceof Mech) || (target instanceof Tank);
     
                     if (attacker.isConventionalInfantry()) {
-                        if (wt.getInternalName() == Infantry.SWARM_MEK) {
+                        if (wt.getInternalName().equals(Infantry.SWARM_MEK)) {
                             // If the target is a Mek that is not swarmed, this is a
                             // good thing
                             if ((target.getSwarmAttackerId() == Entity.NONE) && targetIsSwarmable) {
@@ -3330,7 +3330,7 @@ public class Compute {
                         }
                     } else {
                         // Battle armor units conducting swarm attack
-                        if (wt.getInternalName() == Infantry.SWARM_MEK) {
+                        if (wt.getInternalName().equals(Infantry.SWARM_MEK)) {
                             // If the target is a Mek that is not swarmed, this is a
                             // good thing
                             if ((target.getSwarmAttackerId() == Entity.NONE) && targetIsSwarmable) {

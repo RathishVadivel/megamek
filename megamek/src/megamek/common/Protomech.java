@@ -451,10 +451,7 @@ public class Protomech extends Entity {
         if (!gravity) {
             return jump;
         } else {
-            if (applyGravityEffectsOnMP(jump) > jump) {
-                return jump;
-            }
-            return applyGravityEffectsOnMP(jump);
+            return Math.min(applyGravityEffectsOnMP(jump), jump);
         }
     }
 

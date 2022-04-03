@@ -46,25 +46,24 @@ public class SkinXMLHandler {
     public static String SKIN_HEADER;
 
     static {
-        StringBuffer sb = new StringBuffer();
-        sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-        sb.append("<!--\n");
-        sb.append("  This is the default skin for Megamek\n");
-        sb.append("\n");
-        sb.append("  New skins can be created by specifying UI_Element tags\n");
-        sb.append("\n");
-        sb.append("  The defaultElement UI_Element specifies the default border to be used by UI\n");
-        sb.append("    components\n");
-        sb.append("\n");
-        sb.append("  The defaultButton UI_Element specifies the default border and background\n");
-        sb.append("   images to use for Megamek buttons.  The first image is the base default\n");
-        sb.append("   image and the second image is the pressed image\n");
-        sb.append("\n");
-        sb.append("  NOTE: All locations should be in data/images/widgets\n");
-        sb.append("-->\n");
-        sb.append("<skin xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n");
-        sb.append("    xsi:noNamespaceSchemaLocation=\"skinSchema.xsd\">\n");
-        SKIN_HEADER = sb.toString();
+        String sb = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<!--\n" +
+                "  This is the default skin for Megamek\n" +
+                "\n" +
+                "  New skins can be created by specifying UI_Element tags\n" +
+                "\n" +
+                "  The defaultElement UI_Element specifies the default border to be used by UI\n" +
+                "    components\n" +
+                "\n" +
+                "  The defaultButton UI_Element specifies the default border and background\n" +
+                "   images to use for Megamek buttons.  The first image is the base default\n" +
+                "   image and the second image is the pressed image\n" +
+                "\n" +
+                "  NOTE: All locations should be in data/images/widgets\n" +
+                "-->\n" +
+                "<skin xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n" +
+                "    xsi:noNamespaceSchemaLocation=\"skinSchema.xsd\">\n";
+        SKIN_HEADER = sb;
     }
 
     /**

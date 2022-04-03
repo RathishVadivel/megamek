@@ -2164,11 +2164,11 @@ public class ChatLounge extends AbstractPhaseDisplay implements
             }
             if (players.size() > 0) {
                 String title = Messages.getString("ChatLounge.noCmdr.title"); 
-                String msg = Messages.getString("ChatLounge.noCmdr.msg"); 
+                StringBuilder msg = new StringBuilder(Messages.getString("ChatLounge.noCmdr.msg"));
                 for (String player : players) {
-                    msg += player + "\n";
+                    msg.append(player).append("\n");
                 }
-                clientgui.doAlertDialog(title, msg);
+                clientgui.doAlertDialog(title, msg.toString());
                 return;
             }
 
@@ -3111,25 +3111,25 @@ public class ChatLounge extends AbstractPhaseDisplay implements
     }
     
     private String autoTagHTMLTable() {
-        String result = "<TABLE><TR>"+ UIUtil.guiScaledFontHTML();
+        StringBuilder result = new StringBuilder("<TABLE><TR>" + guiScaledFontHTML());
         int colCount = 0;
         var autoTags = BoardsTagger.Tags.values();
         for (BoardsTagger.Tags tag : autoTags) {
             if (colCount == 0) {
-                result += "<TR>";
+                result.append("<TR>");
             }
-            result += "<TD>" + tag.getName() + "</TD>";
+            result.append("<TD>").append(tag.getName()).append("</TD>");
             colCount++;
             if (colCount == 3) {
                 colCount = 0;
-                result += "</TR>";
+                result.append("</TR>");
             }
         }
         if (colCount != 0) {
-            result += "</TR>";
+            result.append("</TR>");
         }
-        result += "</TABLE>";
-        return result;
+        result.append("</TABLE>");
+        return result.toString();
     }
     
     

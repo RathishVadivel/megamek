@@ -65,16 +65,16 @@ public class BehaviorSettingsFactory {
     }
 
     private void addDefaultBehaviors() {
-        if (!behaviorMap.keySet().contains(DEFAULT_BEHAVIOR_DESCRIPTION)) {
+        if (!behaviorMap.containsKey(DEFAULT_BEHAVIOR_DESCRIPTION)) {
             addBehavior(DEFAULT_BEHAVIOR);
         }
-        if (!behaviorMap.keySet().contains(BERSERK_BEHAVIOR.getDescription())) {
+        if (!behaviorMap.containsKey(BERSERK_BEHAVIOR.getDescription())) {
             addBehavior(BERSERK_BEHAVIOR);
         }
-        if (!behaviorMap.keySet().contains(COWARDLY_BEHAVIOR.getDescription())) {
+        if (!behaviorMap.containsKey(COWARDLY_BEHAVIOR.getDescription())) {
             addBehavior(COWARDLY_BEHAVIOR);
         }
-        if (!behaviorMap.keySet().contains(ESCAPE_BEHAVIOR.getDescription())) {
+        if (!behaviorMap.containsKey(ESCAPE_BEHAVIOR.getDescription())) {
             addBehavior(ESCAPE_BEHAVIOR);
         }
     }

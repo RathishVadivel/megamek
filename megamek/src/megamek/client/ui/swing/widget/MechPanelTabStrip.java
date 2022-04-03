@@ -131,32 +131,32 @@ public class MechPanelTabStrip extends PicMap {
 
     private void setListeners() {
         tabs[0].addActionListener(e -> {
-            if (e.getActionCommand() == PMHotArea.MOUSE_DOWN) {
+            if (e.getActionCommand().equals(PMHotArea.MOUSE_DOWN)) {
                 md.showPanel("movement");
             }
         });
         tabs[1].addActionListener(e -> {
-            if (e.getActionCommand() == PMHotArea.MOUSE_DOWN) {
+            if (e.getActionCommand().equals(PMHotArea.MOUSE_DOWN)) {
                 md.showPanel("pilot");
             }
         });
         tabs[2].addActionListener(e -> {
-            if (e.getActionCommand() == PMHotArea.MOUSE_DOWN) {
+            if (e.getActionCommand().equals(PMHotArea.MOUSE_DOWN)) {
                 md.showPanel("armor");
             }
         });
         tabs[3].addActionListener(e -> {
-            if (e.getActionCommand() == PMHotArea.MOUSE_DOWN) {
+            if (e.getActionCommand().equals(PMHotArea.MOUSE_DOWN)) {
                 md.showPanel("systems");
             }
         });
         tabs[4].addActionListener(e -> {
-            if (e.getActionCommand() == PMHotArea.MOUSE_DOWN) {
+            if (e.getActionCommand().equals(PMHotArea.MOUSE_DOWN)) {
                 md.showPanel("weapons");
             }
         });
         tabs[5].addActionListener(e -> {
-            if (e.getActionCommand() == PMHotArea.MOUSE_DOWN) {
+            if (e.getActionCommand().equals(PMHotArea.MOUSE_DOWN)) {
                 md.showPanel("extras");
             }
         });

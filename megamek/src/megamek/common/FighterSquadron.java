@@ -408,7 +408,7 @@ public class FighterSquadron extends Aero {
                         LogManager.getLogger().error("Unable to compile weapon groups.", ex);
                         return;
                     }
-                } else if (name != "0") {
+                } else if (!name.equals("0")) {
                     addFailedEquipment(name);
                 }
             }

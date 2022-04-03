@@ -1709,9 +1709,9 @@ public class TestBot extends BotClient {
         weapon_count = 0;
         for (Mounted mounted : getEntity(entNum).getWeaponList()) {
             WeaponType wtype = (WeaponType) mounted.getType();
-            if ((wtype.getName() != "ATM 3") && (wtype.getName() != "ATM 6")
-                && (wtype.getName() != "ATM 9")
-                && (wtype.getName() != "ATM 12")) {
+            if ((!wtype.getName().equals("ATM 3")) && (!wtype.getName().equals("ATM 6"))
+                && (!wtype.getName().equals("ATM 9"))
+                && (!wtype.getName().equals("ATM 12"))) {
                 if (getEntity(entNum).getC3Master() != null) {
                     av_range += ((wtype.getLongRange()) * 1.25);
                 } else {
