@@ -161,12 +161,11 @@ public class KeyBindingsOverlay implements IDisplayable, IPreferenceChangeListen
             intGraph.fillRoundRect(0, 0, r.width, r.height, PADDING_X, PADDING_X);
             
             // The coordinates to write the texts to
-            int x = PADDING_X;
             int y = PADDING_Y + fm.getAscent();
             
             // write the strings
             for (String line: allLines) {
-                drawShadowedString(intGraph, line, x, y);
+                drawShadowedString(intGraph, line, PADDING_X, y);
                 y += fm.getHeight();
             }
         }

@@ -881,8 +881,6 @@ public class JumpShipBVCalculator extends BVCalculator {
             pilotFactor = jumpShip.getCrew().getBVSkillMultiplier(jumpShip.getGame());
         }
 
-        int retVal = (int) Math.round((finalBV) * pilotFactor);
-
-        return retVal;
+        return (int) Math.round((finalBV) * pilotFactor);
     }
 }

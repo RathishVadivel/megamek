@@ -249,9 +249,8 @@ public class ArtilleryTargetingControl {
      * @return Firing plan
      */
     public FiringPlan calculateIndirectArtilleryPlan(Entity shooter, Game game, Princess owner) {
-        FiringPlan bestPlan = calculateIndirectArtilleryPlan(shooter, game, owner, 0);
-        
-        return bestPlan;
+
+        return calculateIndirectArtilleryPlan(shooter, game, owner, 0);
     }
     
     /**

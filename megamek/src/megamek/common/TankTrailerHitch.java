@@ -113,11 +113,7 @@ public class TankTrailerHitch implements Transporter {
         }
 
         // We must have enough space for the trailer.
-        if (towed != Entity.NONE) {
-            return false;
-        }
-        
-        return true;
+        return towed == Entity.NONE;
     }
     
     /**

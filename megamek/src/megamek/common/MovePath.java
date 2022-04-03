@@ -1216,8 +1216,7 @@ public class MovePath implements Cloneable, Serializable {
      */
     public void findSimplePathTo(final Coords dest, final MoveStepType type,
                                  int direction, int facing) {
-        Coords src = getFinalCoords();
-        Coords currStep = src;
+        Coords currStep = getFinalCoords();
         Coords nextStep = currStep.translated(direction);
         while (dest.distance(nextStep) < dest.distance(currStep)) {
             addStep(type);
@@ -1626,11 +1625,8 @@ public class MovePath implements Cloneable, Serializable {
      * @return
      */
     public boolean shouldMechanicalJumpCauseFallDamage() {
-        if (isJumping() && (getEntity().getJumpType() == Mech.JUMP_BOOSTER) &&
-            (getJumpMaxElevationChange() > getEntity().getJumpMP())) {
-            return true;
-        }
-        return false;
+        return isJumping() && (getEntity().getJumpType() == Mech.JUMP_BOOSTER) &&
+                (getJumpMaxElevationChange() > getEntity().getJumpMP());
     }
 
     /**

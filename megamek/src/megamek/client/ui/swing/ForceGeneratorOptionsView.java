@@ -946,11 +946,10 @@ public class ForceGeneratorOptionsView extends JPanel implements FocusListener, 
                     if (null == first) {
                         sf.getEntity().setC3NetIdSelf();
                         first = sf.getEntity();
-                        nodes++;
                     } else {
                         sf.getEntity().setC3NetId(first);
-                        nodes++;
                     }
+                    nodes++;
                 }
                 if (nodes >= Entity.MAX_C3i_NODES) {
                     break;

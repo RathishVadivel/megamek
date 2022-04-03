@@ -89,16 +89,13 @@ public final class SmallCraftBay extends Bay {
     @Override
     public boolean canLoad(Entity unit) {
         // Assume that we cannot carry the unit.
-        boolean result = false;
-
-        // Only ASFs, Fighter-mode LAMs or Small Craft
-        if (((unit.isAero()) 
+        boolean result = ((unit.isAero())
                 && !(unit instanceof FighterSquadron)
                 && !(unit instanceof Dropship)
                 && !(unit instanceof Jumpship))
-                || ((unit instanceof LandAirMech) && (unit.getConversionMode() == LandAirMech.CONV_MODE_FIGHTER))) {
-            result = true;
-        }
+                || ((unit instanceof LandAirMech) && (unit.getConversionMode() == LandAirMech.CONV_MODE_FIGHTER));
+
+        // Only ASFs, Fighter-mode LAMs or Small Craft
 
         if (getUnused() < 1) {
             result = false;

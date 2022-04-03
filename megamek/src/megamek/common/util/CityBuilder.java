@@ -332,10 +332,7 @@ public class CityBuilder {
                 || hex.containsTerrain(Terrains.SWAMP)) {
             return false; // uneconomic to build here
         }
-        if (hex.getLevel() >= 4) {
-            return false; // don't build on mountaintops (aesthetics)
-        }
-        return true;
+        return hex.getLevel() < 4; // don't build on mountaintops (aesthetics)
     }
 
     /**

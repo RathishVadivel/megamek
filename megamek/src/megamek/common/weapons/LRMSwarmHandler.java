@@ -295,17 +295,13 @@ public class LRMSwarmHandler extends LRMHandler {
             } else {
                 if (swarmTarget == null) {
                     r = new Report(3425);
-                    r.add(swarmMissilesNowLeft);
-                    r.subject = subjectId;
-                    r.indent(2);
-                    vPhaseReport.addElement(r);
                 } else {
                     r = new Report(3426);
-                    r.add(swarmMissilesNowLeft);
-                    r.subject = subjectId;
-                    r.indent(2);
-                    vPhaseReport.addElement(r);
                 }
+                r.add(swarmMissilesNowLeft);
+                r.subject = subjectId;
+                r.indent(2);
+                vPhaseReport.addElement(r);
             }
 
             // Reset the Swarm Missiles variable to 0 because if we don't it

@@ -1793,8 +1793,7 @@ public class Aero extends Entity implements IAero, IBomber {
             return CRIT_NONE;
         }
 
-        int critical = getPotCrit();
-        return critical;
+        return getPotCrit();
     }
 
     /**
@@ -2401,10 +2400,7 @@ public class Aero extends Entity implements IAero, IBomber {
             return true;
         }
         // if we are still here then type and velocity same, so roll for it
-        if (getWhoFirst() < other.getWhoFirst()) {
-            return false;
-        }
-        return true;
+        return getWhoFirst() >= other.getWhoFirst();
     }
 
     @Override
@@ -2824,15 +2820,11 @@ public class Aero extends Entity implements IAero, IBomber {
         // per a recent ruling on the official forums, aero units can't spot
         // for indirect LRM fire, unless they have a recon cam, an infrared or
         // hyperspec imager, or a high-res imager and it's not night
-        if (!isAirborne() || hasWorkingMisc(MiscType.F_RECON_CAMERA) || hasWorkingMisc(MiscType.F_INFRARED_IMAGER)
+        return !isAirborne() || hasWorkingMisc(MiscType.F_RECON_CAMERA) || hasWorkingMisc(MiscType.F_INFRARED_IMAGER)
                 || hasWorkingMisc(MiscType.F_HYPERSPECTRAL_IMAGER)
                 || (hasWorkingMisc(MiscType.F_HIRES_IMAGER)
-                        && ((game.getPlanetaryConditions().getLight() == PlanetaryConditions.L_DAY)
-                                || (game.getPlanetaryConditions().getLight() == PlanetaryConditions.L_DUSK)))) {
-            return true;
-        } else {
-            return false;
-        }
+                && ((game.getPlanetaryConditions().getLight() == PlanetaryConditions.L_DAY)
+                || (game.getPlanetaryConditions().getLight() == PlanetaryConditions.L_DUSK)));
     }
 
     // Damage a fighter that was part of a squadron when splitting it. Per

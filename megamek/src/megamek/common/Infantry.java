@@ -625,13 +625,10 @@ public class Infantry extends Entity {
 
         if ((hex.terrainLevel(Terrains.WATER) > 0)
                 && !hex.containsTerrain(Terrains.ICE)) {
-            if ((getMovementMode() == EntityMovementMode.HOVER)
-                    || (getMovementMode() == EntityMovementMode.INF_UMU)
-                    || (getMovementMode() == EntityMovementMode.SUBMARINE)
-                    || (getMovementMode() == EntityMovementMode.VTOL)) {
-                return false;
-            }
-            return true;
+            return (getMovementMode() != EntityMovementMode.HOVER)
+                    && (getMovementMode() != EntityMovementMode.INF_UMU)
+                    && (getMovementMode() != EntityMovementMode.SUBMARINE)
+                    && (getMovementMode() != EntityMovementMode.VTOL);
         }
         return false;
     }
@@ -841,10 +838,7 @@ public class Infantry extends Entity {
      */
     @Override
     public boolean isSecondaryArcWeapon(int wn) {
-        if ((getEquipment(wn).getLocation() == LOC_FIELD_GUNS) && !hasActiveFieldArtillery()) {
-            return true;
-        }
-        return false;
+        return (getEquipment(wn).getLocation() == LOC_FIELD_GUNS) && !hasActiveFieldArtillery();
     }
 
     /**
@@ -1228,16 +1222,9 @@ public class Infantry extends Entity {
                 return false;
             } else if (getArmorKit().hasSubType(MiscType.S_COLD_WEATHER) && (game.getPlanetaryConditions().getTemperature() < -30)) {
                 return false;
-            } else if (getArmorKit().hasSubType(MiscType.S_HOT_WEATHER) && (game.getPlanetaryConditions().getTemperature() > 50)) {
-                return false;
-            } else {
-                return true;
-            }
+            } else return !getArmorKit().hasSubType(MiscType.S_HOT_WEATHER) || (game.getPlanetaryConditions().getTemperature() <= 50);
         }
-        if (hasSpaceSuit() || isMechanized()) {
-            return false;
-        }
-        return true;
+        return !hasSpaceSuit() && !isMechanized();
     }
 
     @Override
@@ -1427,11 +1414,7 @@ public class Infantry extends Entity {
         Optional<Mounted> kit = getEquipment().stream()
                 .filter(m -> m.getType().hasFlag(MiscType.F_ARMOR_KIT))
                 .findFirst();
-        if (kit.isPresent()) {
-            return kit.get().getType();
-        } else {
-            return null;
-        }
+        return kit.map(Mounted::getType).orElse(null);
     }
 
     public void setArmorKit(EquipmentType armorKit) {

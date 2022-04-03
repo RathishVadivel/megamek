@@ -326,10 +326,8 @@ public class LobbyMekPopupActions implements ActionListener {
 
     /** Calls lobby actions for a single entity. */
     private void singleEntityAction(String command, Entity entity, String info) {
-        switch (command) {
-            case LMP_CONFIGURE:
-                lobby.lobbyActions.customizeMech(entity);
-                break;
+        if (LMP_CONFIGURE.equals(command)) {
+            lobby.lobbyActions.customizeMech(entity);
         }
     }
 }

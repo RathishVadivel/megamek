@@ -113,12 +113,9 @@ public class MissileWeaponHandler extends AmmoWeaponHandler {
         AmmoType atype = (AmmoType) ammo.getType();
         
         // is any hex in the flight path of the missile ECM affected?
-        boolean bECMAffected = false;
+        boolean bECMAffected = ComputeECM.isAffectedByECM(ae, ae.getPosition(), target.getPosition());
         // if the attacker is affected by ECM or the target is protected by ECM
         // then act as if affected.
-        if (ComputeECM.isAffectedByECM(ae, ae.getPosition(), target.getPosition())) {
-            bECMAffected = true;
-        }
 
         if (((mLinker != null) && (mLinker.getType() instanceof MiscType)
                 && !mLinker.isDestroyed() && !mLinker.isMissing()
@@ -468,11 +465,8 @@ public class MissileWeaponHandler extends AmmoWeaponHandler {
 
         // TW, pg. 171 - shots that miss a target in a building don't damage the
         // building, unless the attacker is adjacent
-        if (!bldgDamagedOnMiss
-                || (toHit.getValue() == TargetRoll.AUTOMATIC_FAIL)) {
-            return false;
-        }
-        return true;
+        return bldgDamagedOnMiss
+                && (toHit.getValue() != TargetRoll.AUTOMATIC_FAIL);
     }
     
     // Aero sanity reduces effectiveness of AMS bays with default cluster mods.

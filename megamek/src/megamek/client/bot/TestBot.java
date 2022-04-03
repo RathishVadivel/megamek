@@ -1876,7 +1876,7 @@ public class TestBot extends BotClient {
 
                         test_weapon = (WeaponType) equip.getType();
                         if ((test_weapon.getAmmoType() == AmmoType.T_AC_ROTARY)
-                            && (equip.isJammed() == true)) {
+                            && (equip.isJammed())) {
                             rac_damage = rac_damage
                                          + (4 * (test_weapon.getDamage()));
                         } else {
@@ -2048,7 +2048,7 @@ public class TestBot extends BotClient {
                     // If the target is officially immobile or if the attacker
                     // has a tcomp
 
-                    if ((has_tcomp == true)
+                    if ((has_tcomp)
                         | (game.getEntity(test_target).isImmobile())) {
                         if (!target_id_list.contains(test_target)) {
                             target_id_list.add(test_target);
@@ -2075,11 +2075,7 @@ public class TestBot extends BotClient {
                 current_option = j.next();
                 if (current_option.target.getEntity().getId() == test_target) {
                     int attack_direction = current_option.toHit.getSideTable();
-                    if (attack_direction == ToHitData.SIDE_REAR) {
-                        rear_shot = true;
-                    } else {
-                        rear_shot = false;
-                    }
+                    rear_shot = attack_direction == ToHitData.SIDE_REAR;
                     break;
                 }
             }
@@ -2149,11 +2145,8 @@ public class TestBot extends BotClient {
                     // If the weapon is not LBX cannon or LBX cannon loaded with
                     // slug
 
-                    boolean direct_fire = true;
-                    if (((WeaponType) test_weapon.getType())
-                                .hasFlag(WeaponType.F_DIRECT_FIRE) == false) {
-                        direct_fire = false;
-                    }
+                    boolean direct_fire = ((WeaponType) test_weapon.getType())
+                            .hasFlag(WeaponType.F_DIRECT_FIRE);
                     if (test_weapon.getType().hasFlag(WeaponType.F_PULSE)) {
                         direct_fire = false;
                     }
@@ -2171,7 +2164,7 @@ public class TestBot extends BotClient {
 
                     // If the weapon is direct fire
 
-                    if (direct_fire == true) {
+                    if (direct_fire) {
 
                         // Get the expected damage, to-hit number, and odds
                         // (0-1) of hitting

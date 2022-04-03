@@ -1332,10 +1332,8 @@ public class TestSupportVehicle extends TestEntity {
                     buff.append(StringUtil.makeLength(mount.getName(), 30));
                     buff.append(mount.getType().getSupportVeeSlots(supportVee)).append("\n");
                     addedCargo = true;
-                    continue;
-                } else {
-                    continue;
                 }
+                continue;
             }
 
             if (!(mount.getType() instanceof AmmoType)

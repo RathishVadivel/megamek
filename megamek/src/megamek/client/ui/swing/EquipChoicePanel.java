@@ -138,12 +138,9 @@ public class EquipChoicePanel extends JPanel {
             Mech mech = (Mech) entity;
 
             // Ejection Seat
-            boolean hasEjectSeat = true;
+            boolean hasEjectSeat = mech.getCockpitType() != Mech.COCKPIT_TORSO_MOUNTED
+                    && !mech.hasQuirk(OptionsConstants.QUIRK_NEG_NO_EJECT);
             // torso mounted cockpits don't have an ejection seat
-            if (mech.getCockpitType() == Mech.COCKPIT_TORSO_MOUNTED
-                    || mech.hasQuirk(OptionsConstants.QUIRK_NEG_NO_EJECT)) {
-                hasEjectSeat = false;
-            }
             if (mech.isIndustrial()) {
                 hasEjectSeat = false;
                 // industrials can only eject when they have an ejection seat

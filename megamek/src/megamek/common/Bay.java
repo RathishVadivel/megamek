@@ -189,12 +189,9 @@ public class Bay implements Transporter, ITechnology {
     @Override
     public boolean canLoad(Entity unit) {
         // Assume that we cannot carry the unit.
-        boolean result = true;
+        boolean result = !(getUnused() < spaceForUnit(unit));
 
         // We must have enough space for the new troops.
-        if (getUnused() < spaceForUnit(unit)) {
-            result = false;
-        }
 
         // more doors than units loaded
         if (currentdoors <= loadedThisTurn) {
@@ -438,8 +435,7 @@ public class Bay implements Transporter, ITechnology {
 
     @Override
     public final List<Entity> getExternalUnits() {
-        ArrayList<Entity> rv = new ArrayList<>(1);
-        return rv;
+        return new ArrayList<>(1);
     }
 
     @Override

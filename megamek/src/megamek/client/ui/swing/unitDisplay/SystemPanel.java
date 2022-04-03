@@ -254,7 +254,7 @@ class SystemPanel extends PicMap implements ItemListener, ActionListener, ListSe
                     new String[] { cs.getMount().getName(),
                             cs.getMount2().getName() }, true);
             choiceDialog.setVisible(true);
-            if (choiceDialog.getAnswer() == true) {
+            if (choiceDialog.getAnswer()) {
                 // load up the choices
                 int[] toDump = choiceDialog.getChoices();
                 if (toDump[0] == 0) {
@@ -696,19 +696,13 @@ class SystemPanel extends PicMap implements ItemListener, ActionListener, ListSe
                 m_bDumpAmmo.setEnabled(false);
                 m_chMode.setEnabled(false);
                 Mounted m = getSelectedEquipment();
-                boolean carryingBAsOnBack = false;
-                if ((en instanceof Mech)
+                boolean carryingBAsOnBack = (en instanceof Mech)
                         && ((en.getExteriorUnitAt(Mech.LOC_CT, true) != null)
-                                || (en.getExteriorUnitAt(Mech.LOC_LT, true) != null) || (en
-                                .getExteriorUnitAt(Mech.LOC_RT, true) != null))) {
-                    carryingBAsOnBack = true;
-                }
+                        || (en.getExteriorUnitAt(Mech.LOC_LT, true) != null) || (en
+                        .getExteriorUnitAt(Mech.LOC_RT, true) != null));
 
-                boolean invalidEnvironment = false;
-                if ((en instanceof Mech)
-                        && (en.getLocationStatus(Mech.LOC_CT) > ILocationExposureStatus.NORMAL)) {
-                    invalidEnvironment = true;
-                }
+                boolean invalidEnvironment = (en instanceof Mech)
+                        && (en.getLocationStatus(Mech.LOC_CT) > ILocationExposureStatus.NORMAL);
 
                 if ((en instanceof Tank)
                         && (en.getLocationStatus(Tank.LOC_REAR) > ILocationExposureStatus.NORMAL)) {

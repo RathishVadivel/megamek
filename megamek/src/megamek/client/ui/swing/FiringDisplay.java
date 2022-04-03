@@ -200,14 +200,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || display.isIgnoringEvents()
-                                || !display.isVisible()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && !display.isIgnoringEvents()
+                                && display.isVisible();
                     }
 
                     @Override
@@ -222,14 +218,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -245,14 +237,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -268,15 +256,11 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()
-                                || !buttons.get(FiringCommand.FIRE_FIRE).isEnabled()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents()
+                                && buttons.get(FiringCommand.FIRE_FIRE).isEnabled();
                     }
 
                     @Override
@@ -291,14 +275,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -313,14 +293,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -335,14 +311,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -358,14 +330,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -381,14 +349,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -403,14 +367,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -425,14 +385,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -447,14 +403,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -469,14 +421,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -491,14 +439,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -513,14 +457,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -535,14 +475,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -557,14 +493,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -587,14 +519,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || display.isIgnoringEvents()
-                                || !display.isVisible()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && !display.isIgnoringEvents()
+                                && display.isVisible();
                     }
 
                     @Override
@@ -609,14 +537,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || display.isIgnoringEvents()
-                                || !display.isVisible()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && !display.isIgnoringEvents()
+                                && display.isVisible();
                     }
 
                     @Override
@@ -631,13 +555,9 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -1331,13 +1251,10 @@ public class FiringDisplay extends StatusBarPhaseDisplay implements ItemListener
                 JOptionPane.QUESTION_MESSAGE, null, skillNames.keySet().toArray(), null);
 
         // unsafe, but since we're generating it right here, it should be fine.
-        switch (skillNames.get(input)) {
-            case OptionsConstants.GUNNERY_BLOOD_STALKER:
-                // figure out when to clear Blood Stalker (when unit destroyed or flees or fly off no return)
-                ActivateBloodStalkerAction bloodStalkerAction = new ActivateBloodStalkerAction(ce().getId(), target.getTargetId());
-                attacks.add(0, bloodStalkerAction);
-                ce().setBloodStalkerTarget(target.getTargetId());
-                break;
+        if (OptionsConstants.GUNNERY_BLOOD_STALKER.equals(skillNames.get(input))) {// figure out when to clear Blood Stalker (when unit destroyed or flees or fly off no return)
+            ActivateBloodStalkerAction bloodStalkerAction = new ActivateBloodStalkerAction(ce().getId(), target.getTargetId());
+            attacks.add(0, bloodStalkerAction);
+            ce().setBloodStalkerTarget(target.getTargetId());
         }
 
         updateActivateSPA();

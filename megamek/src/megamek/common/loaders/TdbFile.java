@@ -63,9 +63,8 @@ public class TdbFile implements IMechLoader {
             JAXBContext jc = JAXBContext.newInstance(TdbFile.class);
             
             Unmarshaller um = jc.createUnmarshaller();
-            TdbFile tdbFile = (TdbFile) um.unmarshal(MegaMekXmlUtil.createSafeXmlSource(is));
-            
-            return tdbFile;
+
+            return (TdbFile) um.unmarshal(MegaMekXmlUtil.createSafeXmlSource(is));
         } catch (Exception e) {
             throw new EntityLoadingException("   Failure to parse XML ("
                     + e.getLocalizedMessage() + ")", e);

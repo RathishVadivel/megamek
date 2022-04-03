@@ -941,9 +941,7 @@ public class DropShipBVCalculator extends BVCalculator {
             pilotFactor = dropShip.getCrew().getBVSkillMultiplier(dropShip.getGame());
         }
 
-        int retVal = (int) Math.round((finalBV) * pilotFactor);
-
-        return retVal;
+        return (int) Math.round((finalBV) * pilotFactor);
     }
 
     private static String getArcName(Dropship dropShip, int loc) {

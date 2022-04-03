@@ -223,11 +223,7 @@ public class SpecialHexDisplay implements Serializable {
         } else if ((obscured == SHD_OBSCURED_TEAM) && (other != null)
                 && (owner.getTeam() == other.getTeam())) {
             return false;
-        } else if (obscured == SHD_OBSCURED_ALL) {
-            return false;
-        } else {
-            return true;
-        }
+        } else return obscured != SHD_OBSCURED_ALL;
     }
 
     public void setObscured(int obscured) {

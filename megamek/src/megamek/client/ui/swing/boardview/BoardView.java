@@ -1871,14 +1871,13 @@ public class BoardView extends JPanel implements Scrollable, BoardListener, Mous
         // ranges
         int fogStripes = GUIPreferences.getInstance().getFovStripes();
         if (outOfFOV && (fogStripes > 0) && (g instanceof Graphics2D)) {
-            float lineSpacing = fogStripes;
             // totally transparent here hurts the eyes
             Color c2 = new Color(col.getRed() / 2, col.getGreen() / 2,
                     col.getBlue() / 2, col.getAlpha() / 2);
 
             // the numbers make the lines align across hexes
-            GradientPaint gp = new GradientPaint(42.0f / lineSpacing, 0.0f,
-                    col, 104.0f / lineSpacing, 106.0f / lineSpacing, c2, true);
+            GradientPaint gp = new GradientPaint(42.0f / (float) fogStripes, 0.0f,
+                    col, 104.0f / (float) fogStripes, 106.0f / (float) fogStripes, c2, true);
             g2D.setPaint(gp);
         }
         Composite svComposite = g2D.getComposite();

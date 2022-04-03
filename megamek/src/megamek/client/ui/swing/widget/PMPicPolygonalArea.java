@@ -65,11 +65,7 @@ public class PMPicPolygonalArea extends PMGenericHotArea {
 
     public void setActiveImage(Image im) {
         this.activeImage = im;
-        if (activeImage != null) {
-            highlight = true;
-        } else {
-            highlight = false;
-        }
+        highlight = activeImage != null;
     }
 
     // PMElement interface methods

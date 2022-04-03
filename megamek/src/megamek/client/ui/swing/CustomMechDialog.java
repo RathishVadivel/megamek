@@ -823,11 +823,8 @@ public class CustomMechDialog extends ClientDialog implements ActionListener,
         choDeploymentRound.addItemListener(this);
 
         chHidden.removeActionListener(this);
-        boolean enableHidden = true;
+        boolean enableHidden = !entity.isAirborne() && !entity.isAirborneVTOLorWIGE();
         // Airborne units can't be hidden
-        if (entity.isAirborne() || entity.isAirborneVTOLorWIGE()) {
-            enableHidden = false;
-        }
         // Landed dropships can't be hidden
         if ((entity instanceof Dropship)) {
             enableHidden = false;

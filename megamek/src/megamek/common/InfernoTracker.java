@@ -141,10 +141,7 @@ public class InfernoTracker implements Serializable, RoundUpdated {
      *         yet, or if they have burned out.
      */
     public boolean isStillBurning() {
-        if (turnsLeftToBurn > 0 || turnsIVLeftToBurn > 0) {
-            return true;
-        }
-        return false;
+        return turnsLeftToBurn > 0 || turnsIVLeftToBurn > 0;
     }
 
     /**

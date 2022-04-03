@@ -369,14 +369,10 @@ public class BoardClusterTracker {
             int buildingCF = building.getCurrentCF(coords);
             
             return entity.getWeight() > buildingCF;            
-        } else if ((relevantMovementType != MovementType.Flyer) &&
+        } else return (relevantMovementType != MovementType.Flyer) &&
                 (relevantMovementType != MovementType.Jump) &&
                 (relevantMovementType != MovementType.None) &&
-                (relevantMovementType != MovementType.Water)) {
-            return true;
-        } else {
-            return false;
-        }
+                (relevantMovementType != MovementType.Water);
     }
     
     /**

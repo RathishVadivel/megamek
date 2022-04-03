@@ -275,8 +275,7 @@ public class AbstractPathFinder<N, C, E> {
                 if (newCost != null) {
                     // we have a better path to this node, so we can update it
                     pathsCosts.put(node, newCost);
-                    Collection<E> neighbours = adjacencyMap.getAdjacent(e);
-                    Collection<E> filteredNeighbours = neighbours;
+                    Collection<E> filteredNeighbours = adjacencyMap.getAdjacent(e);
                     for (Filter<E> f : filters) {
                         filteredNeighbours = f.doFilter(filteredNeighbours);
                     }

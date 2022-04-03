@@ -183,13 +183,9 @@ public class MoveStep implements Serializable {
             isJumpingPath = path.isJumping();
             isCarefulPath = path.isCareful();
         }
-        if ((type == MoveStepType.UNLOAD) || (type == MoveStepType.LAUNCH)
+        hasEverUnloaded = (type == MoveStepType.UNLOAD) || (type == MoveStepType.LAUNCH)
                 || (type == MoveStepType.DROP) || (type == MoveStepType.UNDOCK)
-                || (type == MoveStepType.DISCONNECT)) {
-            hasEverUnloaded = true;
-        } else {
-            hasEverUnloaded = false;
-        }
+                || (type == MoveStepType.DISCONNECT);
     }
 
     /**
@@ -207,13 +203,9 @@ public class MoveStep implements Serializable {
         targetId = target.getTargetId();
         targetType = target.getTargetType();
         targetPos = pos;
-        if ((type == MoveStepType.UNLOAD) || (type == MoveStepType.LAUNCH)
+        hasEverUnloaded = (type == MoveStepType.UNLOAD) || (type == MoveStepType.LAUNCH)
                 || (type == MoveStepType.DROP) || (type == MoveStepType.UNDOCK)
-                || (type == MoveStepType.DISCONNECT)) {
-            hasEverUnloaded = true;
-        } else {
-            hasEverUnloaded = false;
-        }
+                || (type == MoveStepType.DISCONNECT);
     }
 
     /**
@@ -228,13 +220,9 @@ public class MoveStep implements Serializable {
         this(path, type);
         targetId = target.getTargetId();
         targetType = target.getTargetType();
-        if ((type == MoveStepType.UNLOAD) || (type == MoveStepType.LAUNCH)
+        hasEverUnloaded = (type == MoveStepType.UNLOAD) || (type == MoveStepType.LAUNCH)
                 || (type == MoveStepType.DROP) || (type == MoveStepType.UNDOCK)
-                || (type == MoveStepType.DISCONNECT)) {
-            hasEverUnloaded = true;
-        } else {
-            hasEverUnloaded = false;
-        }
+                || (type == MoveStepType.DISCONNECT);
     }
 
     /**
@@ -269,13 +257,9 @@ public class MoveStep implements Serializable {
                     TreeMap<Integer, Vector<Integer>> targets) {
         this(path, type);
         launched = targets;
-        if ((type == MoveStepType.UNLOAD) || (type == MoveStepType.LAUNCH)
+        hasEverUnloaded = (type == MoveStepType.UNLOAD) || (type == MoveStepType.LAUNCH)
                 || (type == MoveStepType.DROP) || (type == MoveStepType.UNDOCK)
-                || (type == MoveStepType.DISCONNECT)) {
-            hasEverUnloaded = true;
-        } else {
-            hasEverUnloaded = false;
-        }
+                || (type == MoveStepType.DISCONNECT);
     }
 
     public MoveStep(MovePath path, MoveStepType type, int recovery,
@@ -1009,11 +993,7 @@ public class MoveStep implements Serializable {
                 // Do something here...
                 break;
             case ROLL:
-                if (prev.isRolled) {
-                    isRolled = false;
-                } else {
-                    isRolled = true;
-                }
+                isRolled = !prev.isRolled;
                 // doesn't cost anything if previous was a yaw
                 if (prev.getType() != MoveStepType.YAW) {
                     setMp(1);
@@ -3936,11 +3916,7 @@ public class MoveStep implements Serializable {
             }
         }
 
-        if (straight >= thresh) {
-            return true;
-        }
-
-        return false;
+        return straight >= thresh;
 
     }
 

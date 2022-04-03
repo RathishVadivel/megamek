@@ -45,12 +45,9 @@ public class CombatVehicleBVCalculator extends BVCalculator {
         double dbv = 0; // defensive battle value
         double obv = 0; // offensive bv
 
-        boolean blueShield = false;
+        boolean blueShield = tank.hasWorkingMisc(MiscType.F_BLUE_SHIELD);
         // a blueshield system means a +0.2 on the armor and internal modifier,
         // like for mechs
-        if (tank.hasWorkingMisc(MiscType.F_BLUE_SHIELD)) {
-            blueShield = true;
-        }
 
         bvText.append(startTable);
         double armorMultiplier = 1.0;

@@ -144,10 +144,7 @@ public class ForceDescriptor {
         if (cRec.getUnitType() != unitType) {
             return false;
         }
-        if (chassis.size() > 0 && !chassis.contains(cRec.getChassis())) {
-            return false;
-        }
-        return true;
+        return chassis.size() <= 0 || chassis.contains(cRec.getChassis());
     }
 
     /**
@@ -165,10 +162,7 @@ public class ForceDescriptor {
         if (variants.size() > 0 && !variants.contains(mRec.getModel())) {
             return false;
         }
-        if (models.size() > 0 && !models.contains(mRec.getKey())) {
-            return false;
-        }
-        return true;
+        return models.size() <= 0 || models.contains(mRec.getKey());
     }
 
     /**

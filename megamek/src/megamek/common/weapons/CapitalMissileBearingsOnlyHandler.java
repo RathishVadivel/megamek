@@ -73,11 +73,8 @@ public class CapitalMissileBearingsOnlyHandler extends AmmoBayWeaponHandler {
      */
     @Override
     public boolean cares(GamePhase phase) {
-        if ((phase == GamePhase.FIRING)
-                || (phase == GamePhase.TARGETING)) {
-            return true;
-        }
-        return false;
+        return (phase == GamePhase.FIRING)
+                || (phase == GamePhase.TARGETING);
     }
     
     protected void getMountedAmmo() {
@@ -696,11 +693,7 @@ public class CapitalMissileBearingsOnlyHandler extends AmmoBayWeaponHandler {
      */
     @Override
     protected boolean canEngageCapitalMissile(Mounted counter) {
-        if (counter.getBayWeapons().size() < 2) {
-            return false;
-        } else {
-            return true;
-        }
+        return counter.getBayWeapons().size() >= 2;
     }
     
     /**

@@ -822,12 +822,8 @@ public class QuadMech extends Mech {
         // Handle upper cover specially, as treating it as a bitmask will lead
         //  to every location being covered
         if (cover  == LosEffects.COVER_UPPER) {
-            if ((location == LOC_LLEG) || (location == LOC_RLEG)
-                    || (location == LOC_LARM) || (location == LOC_RARM)) {
-                return false;
-            } else {
-                return true;
-            }
+            return (location != LOC_LLEG) && (location != LOC_RLEG)
+                    && (location != LOC_LARM) && (location != LOC_RARM);
         }
         
         // left and right cover are from attacker's POV.
@@ -849,12 +845,10 @@ public class QuadMech extends Mech {
                      (location == Mech.LOC_LLEG))) {
                 return true;
             }
-            if (((cover & LosEffects.COVER_LEFT) != 0) &&
+            return ((cover & LosEffects.COVER_LEFT) != 0) &&
                     ((location == Mech.LOC_RARM) ||
-                     (location == Mech.LOC_RT) ||
-                     (location == Mech.LOC_RLEG))) {
-                return true;
-            }
+                            (location == Mech.LOC_RT) ||
+                            (location == Mech.LOC_RLEG));
         } else {
             if (((cover & LosEffects.COVER_LOWLEFT) != 0) &&
                     ((location == Mech.LOC_LARM) ||
@@ -872,14 +866,11 @@ public class QuadMech extends Mech {
                      (location == Mech.LOC_LLEG))) {
                 return true;
             }
-            if (((cover & LosEffects.COVER_RIGHT) != 0) &&
+            return ((cover & LosEffects.COVER_RIGHT) != 0) &&
                     ((location == Mech.LOC_RARM) ||
-                     (location == Mech.LOC_RT) ||
-                     (location == Mech.LOC_RLEG))) {
-                return true;
-            }
+                            (location == Mech.LOC_RT) ||
+                            (location == Mech.LOC_RLEG));
         }
-        return false;
     }
 
     /**

@@ -82,12 +82,9 @@ public class TeleMissileAttackAction extends AbstractAttackAction {
      */
     private boolean checkPDConditions(Game game, Targetable target) {
         advancedPD = game.getOptions().booleanOption(OptionsConstants.ADVAERORULES_STRATOPS_ADV_POINTDEF);
-        if ((target == null)
-                || (target.getTargetType() != Targetable.TYPE_ENTITY)
-                || !advancedPD) {
-            return false;
-        }
-        return true;
+        return (target != null)
+                && (target.getTargetType() == Targetable.TYPE_ENTITY)
+                && advancedPD;
     }
     
     /**

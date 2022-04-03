@@ -172,16 +172,13 @@ public class ArtilleryBayWeaponIndirectFireHandler extends AmmoBayWeaponHandler 
                         @Override
                         public boolean accept(Entity entity) {
                             Integer id = entity.getId();
-                            if ((player == entity.getOwnerId())
+                            return (player == entity.getOwnerId())
                                     && spottersBefore.contains(id)
                                     && !LosEffects.calculateLOS(game, entity, targ, true).isBlocked()
                                     && entity.isActive()
                                     // airborne aeros can't spot for arty
                                     && !(entity.isAero() && entity.isAirborne())
-                                    && !entity.isINarcedWith(INarcPod.HAYWIRE)) {
-                                return true;
-                            }
-                            return false;
+                                    && !entity.isINarcedWith(INarcPod.HAYWIRE);
                         }
                     });
 
@@ -348,15 +345,13 @@ public class ArtilleryBayWeaponIndirectFireHandler extends AmmoBayWeaponHandler 
                         r.subject = subjectId;
                         r.newlines = 1;
                         r.add(atype.getShortName());
-                        r.add(targetPos.getBoardNum());
-                        vPhaseReport.addElement(r);
                     } else {
                         r = new Report(3192);
                         r.subject = subjectId;
                         r.newlines = 1;
-                        r.add(targetPos.getBoardNum());
-                        vPhaseReport.addElement(r);
                     }
+                    r.add(targetPos.getBoardNum());
+                    vPhaseReport.addElement(r);
                 } else {
                     // misses and scatters off-board
                     r = new Report(3200);

@@ -747,11 +747,8 @@ public class SharedUtility {
         // need to check and see
         // if the units current velocity is zero
 
-        boolean isRamming = false;
-        if ((md.getLastStep() != null)
-                && (md.getLastStep().getType() == MoveStepType.RAM)) {
-            isRamming = true;
-        }
+        boolean isRamming = (md.getLastStep() != null)
+                && (md.getLastStep().getType() == MoveStepType.RAM);
 
         // if using advanced movement then I need to add on movement
         // steps to get the vessel from point a to point b

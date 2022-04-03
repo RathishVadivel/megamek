@@ -942,13 +942,9 @@ public class ScenarioLoader {
     private boolean parseBoolean(StringMultiMap p, String key, boolean defaultValue) {
         boolean result = defaultValue;
         if (p.containsKey(key)) {
-            if (p.getString(key).equalsIgnoreCase("true") 
+            result = p.getString(key).equalsIgnoreCase("true")
                     || p.getString(key).equalsIgnoreCase("on")
-                    || p.getString(key).equalsIgnoreCase("1")) {
-                result = true;
-            } else {
-                result = false;
-            }
+                    || p.getString(key).equalsIgnoreCase("1");
         }
         return result;
     }

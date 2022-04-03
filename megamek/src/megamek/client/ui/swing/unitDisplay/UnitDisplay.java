@@ -125,11 +125,7 @@ public class UnitDisplay extends JPanel {
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (ud.isVisible()) {
-                            return true;
-                        } else {
-                            return false;
-                        }
+                        return ud.isVisible();
                     }
 
                     @Override
@@ -147,11 +143,7 @@ public class UnitDisplay extends JPanel {
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (ud.isVisible()) {
-                            return true;
-                        } else {
-                            return false;
-                        }
+                        return ud.isVisible();
                     }
 
                     @Override
@@ -169,11 +161,7 @@ public class UnitDisplay extends JPanel {
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (ud.isVisible()) {
-                            return true;
-                        } else {
-                            return false;
-                        }
+                        return ud.isVisible();
                     }
 
                     @Override
@@ -191,11 +179,7 @@ public class UnitDisplay extends JPanel {
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (ud.isVisible()) {
-                            return true;
-                        } else {
-                            return false;
-                        }
+                        return ud.isVisible();
                     }
 
                     @Override
@@ -213,11 +197,7 @@ public class UnitDisplay extends JPanel {
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (ud.isVisible()) {
-                            return true;
-                        } else {
-                            return false;
-                        }
+                        return ud.isVisible();
                     }
 
                     @Override
@@ -235,11 +215,7 @@ public class UnitDisplay extends JPanel {
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (ud.isVisible()) {
-                            return true;
-                        } else {
-                            return false;
-                        }
+                        return ud.isVisible();
                     }
 
                     @Override
@@ -371,14 +347,11 @@ public class UnitDisplay extends JPanel {
     void processMechDisplayEvent(MechDisplayEvent event) {
         for (int i = 0; i < eventListeners.size(); i++) {
             MechDisplayListener lis = eventListeners.get(i);
-            switch (event.getType()) {
-                case MechDisplayEvent.WEAPON_SELECTED:
-                    lis.weaponSelected(event);
-                    break;
-                default:
-                    System.err.println("unknown event " + event.getType()
-                            + " in processMechDisplayEvent");
-                    break;
+            if (event.getType() == MechDisplayEvent.WEAPON_SELECTED) {
+                lis.weaponSelected(event);
+            } else {
+                System.err.println("unknown event " + event.getType()
+                        + " in processMechDisplayEvent");
             }
         }
     }

@@ -104,13 +104,10 @@ public class DockingCollar implements Transporter {
         if (unit instanceof Dropship) {
             // Dropships are all that collars can carry
             Dropship ds = (Dropship) unit;
-            result = true;
 
             // If the dropship's collar is damaged, or it's a primitive without a collar
             // we can't mate with it.
-            if (ds.isDockCollarDamaged()) {
-                result = false;
-            }
+            result = !ds.isDockCollarDamaged();
 
             // If this collar is in use, or if it's damaged, then we can't
             if ((currentSpace < 1) || isDamaged()) {
@@ -288,8 +285,7 @@ public class DockingCollar implements Transporter {
 
     @Override
     public final List<Entity> getExternalUnits() {
-        ArrayList<Entity> rv = new ArrayList<>(1);
-        return rv;
+        return new ArrayList<>(1);
     }
 
     @Override

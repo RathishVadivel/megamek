@@ -329,11 +329,7 @@ public class MechSearchFilter {
 
         }
 
-        if ((mech.getYear() < startYear) || (mech.getYear() > endYear)) {
-            return false;
-        }
-
-        return true;
+        return (mech.getYear() >= startYear) && (mech.getYear() <= endYear);
     }
 
     /**

@@ -152,11 +152,7 @@ public class SkinXMLHandler {
             // Until that's done, just assume anything with UI_ELEMENT tags is
             //  valid
             NodeList listOfComponents = doc.getElementsByTagName(UI_ELEMENT);
-            if (listOfComponents.getLength() > 0) {
-                return true;
-            } else {
-                return false;
-            }
+            return listOfComponents.getLength() > 0;
         } catch (Exception e) {
             return false;
         }

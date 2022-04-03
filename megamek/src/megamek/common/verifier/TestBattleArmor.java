@@ -390,19 +390,11 @@ public class TestBattleArmor extends TestEntity {
         if ((numUsedCrits + newCrits) <= ba.getNumCrits(loc)) {
             // Weapons require extra criticism
             if (newMount.getType() instanceof WeaponType) {
-                if ((numAntiMechWeapons + 1) <= 
-                        ba.getNumAllowedAntiMechWeapons(loc)) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return (numAntiMechWeapons + 1) <=
+                        ba.getNumAllowedAntiMechWeapons(loc);
             } else if (newMount.getType().hasFlag(MiscType.F_AP_MOUNT)) {
-                if ((numAntiPersonnelWeapons + 1) <= 
-                        ba.getNumAllowedAntiPersonnelWeapons(loc, trooper)) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return (numAntiPersonnelWeapons + 1) <=
+                        ba.getNumAllowedAntiPersonnelWeapons(loc, trooper);
             } else {
                 return true;
             }

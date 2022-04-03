@@ -899,10 +899,7 @@ public class Tank extends Entity {
      */
     @Override
     public boolean isSecondaryArcWeapon(int weaponId) {
-        if (getEquipment(weaponId).getLocation() == getLocTurret()) {
-            return true;
-        }
-        return false;
+        return getEquipment(weaponId).getLocation() == getLocTurret();
     }
 
     /**
@@ -1320,9 +1317,8 @@ public class Tank extends Entity {
     @Override
     public int getSprintMP() {
         // Overdrive
-        if (game != null
-                && game.getOptions().booleanOption(OptionsConstants.ADVGRNDMOV_VEHICLE_ADVANCED_MANEUVERS)) {
-            return getSprintMP(true, false, false);
+        if (game != null) {
+            game.getOptions().booleanOption(OptionsConstants.ADVGRNDMOV_VEHICLE_ADVANCED_MANEUVERS);
         }
         return getSprintMP(true, false, false);
     }
@@ -2691,10 +2687,8 @@ public class Tank extends Entity {
                 if (!addedCargo) {
                     usedSlots += mount.getType().getTankSlots(this);
                     addedCargo = true;
-                    continue;
-                } else {
-                    continue;
                 }
+                continue;
             }
             if ((mount.getType() instanceof MiscType)
                     && (mount.getType().hasFlag(MiscType.F_JUMP_JET)
@@ -3375,11 +3369,11 @@ public class Tank extends Entity {
     @Override
     public void setHullDown(boolean down) {
         super.setHullDown(down);
-        if ((getMovedBackwards() == true) && (down == true)) {
+        if ((getMovedBackwards()) && (down)) {
             m_bBackedIntoHullDown = true;
-        } else if ((getMovedBackwards() == false) && (down == true)) {
+        } else if ((!getMovedBackwards()) && (down)) {
             m_bBackedIntoHullDown = false;
-        } else if (down == false) {
+        } else if (!down) {
             m_bBackedIntoHullDown = false;
         }
     }

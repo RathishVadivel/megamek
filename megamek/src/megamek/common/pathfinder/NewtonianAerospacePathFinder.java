@@ -195,11 +195,7 @@ public class NewtonianAerospacePathFinder {
         
         // terminator conditions:
         // we've visited this hex already and the path we are considering is longer than the previous path that visited this hex
-        if (visitedCoords.containsKey(pathDestination) && (visitedCoords.get(pathDestination).intValue() < path.getMpUsed())) {
-            return true;
-        }
-        
-        return false;
+        return visitedCoords.containsKey(pathDestination) && (visitedCoords.get(pathDestination).intValue() < path.getMpUsed());
     }
     
     /**
@@ -222,11 +218,7 @@ public class NewtonianAerospacePathFinder {
         }
         
         // turning back and forth in place is no good
-        if ((stepType == MoveStepType.TURN_LEFT && path.getLastStep().getType() == MoveStepType.TURN_RIGHT) ||
-                (stepType == MoveStepType.TURN_RIGHT && path.getLastStep().getType() == MoveStepType.TURN_LEFT)) {
-            return true;
-        }
-        
-        return false;
+        return (stepType == MoveStepType.TURN_LEFT && path.getLastStep().getType() == MoveStepType.TURN_RIGHT) ||
+                (stepType == MoveStepType.TURN_RIGHT && path.getLastStep().getType() == MoveStepType.TURN_LEFT);
     }
 }

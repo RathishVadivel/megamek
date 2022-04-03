@@ -531,11 +531,8 @@ public class BipedMech extends Mech {
                 if (rear) {
                     return false;
                 }
-                if (hasActiveShield(Mech.LOC_LARM) || hasActiveShield(Mech.LOC_RARM)) {
-                    return true;
-                }
+                return hasActiveShield(Mech.LOC_LARM) || hasActiveShield(Mech.LOC_RARM);
                 // else
-                return false;
             case Mech.LOC_LARM:
             case Mech.LOC_LT:
             case Mech.LOC_LLEG:

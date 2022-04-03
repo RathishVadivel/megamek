@@ -518,10 +518,7 @@ public class UnitTable {
             } else if (!weightClasses.equals(other.weightClasses)) {
                 return false;
             }
-            if (year != other.year) {
-                return false;
-            }
-            return true;
+            return year == other.year;
         }
 
         public FactionRecord getFaction() {

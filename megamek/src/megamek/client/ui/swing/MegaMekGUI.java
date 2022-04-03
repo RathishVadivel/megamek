@@ -1078,8 +1078,7 @@ public class MegaMekGUI implements IPreferenceChangeListener {
                 }
             }
         }
-        BaseMultiResolutionImage multiResolutionImage = new BaseMultiResolutionImage(images.toArray(new Image[0]));
 
-        return  multiResolutionImage;
+        return new BaseMultiResolutionImage(images.toArray(new Image[0]));
     }
 }

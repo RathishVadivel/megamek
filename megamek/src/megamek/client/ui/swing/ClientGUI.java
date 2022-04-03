@@ -575,11 +575,7 @@ public class ClientGUI extends JPanel implements BoardViewListener,
      * Called when the user selects the "View->Game Options" menu item.
      */
     private void showOptions() {
-        if (client.getGame().getPhase() == GamePhase.LOUNGE) {
-            getGameOptionsDialog().setEditable(true);
-        } else {
-            getGameOptionsDialog().setEditable(false);
-        }
+        getGameOptionsDialog().setEditable(client.getGame().getPhase() == GamePhase.LOUNGE);
         // Display the game options dialog.
         getGameOptionsDialog().update(client.getGame().getOptions());
         getGameOptionsDialog().setVisible(true);

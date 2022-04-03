@@ -458,9 +458,7 @@ public class WeaponType extends EquipmentType {
         if (weapon.isInBearingsOnlyMode()) {
             eRange = RangeType.RANGE_BEARINGS_ONLY_OUT;
         }
-        int[] weaponRanges =
-            { minRange, sRange, mRange, lRange, eRange };
-        return weaponRanges;
+        return new int[]{ minRange, sRange, mRange, lRange, eRange };
     }
 
     public int getMinimumRange() {

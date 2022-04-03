@@ -495,11 +495,7 @@ public class CapitalMissileHandler extends AmmoWeaponHandler {
      */
     @Override
     protected boolean canEngageCapitalMissile(Mounted counter) {
-        if (counter.getBayWeapons().size() < 2) {
-            return false;
-        } else {
-            return true;
-        }
+        return counter.getBayWeapons().size() >= 2;
     }
     
     /**

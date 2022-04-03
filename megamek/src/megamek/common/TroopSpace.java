@@ -239,8 +239,7 @@ public final class TroopSpace implements Transporter {
 
     @Override
     public final List<Entity> getExternalUnits() {
-        ArrayList<Entity> rv = new ArrayList<>(1);
-        return rv;
+        return new ArrayList<>(1);
     }
 
     @Override

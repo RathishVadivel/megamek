@@ -1976,12 +1976,11 @@ public class WeaponPanel extends PicMap implements ListSelectionListener, Action
         // direct fire then
         if (wtype.hasFlag(WeaponType.F_ARTILLERY)) {
             if (gui.getCurrentPanel() instanceof TargetingPhaseDisplay) {
-                ranges[0] = new int[] { 0, 0, 0, 100, 0 };  
-                ranges[1] = new int[] { 0, 0, 0, 0, 0 };
+                ranges[0] = new int[] { 0, 0, 0, 100, 0 };
             } else {
-                ranges[0] = new int[] { 6, 0, 0, 17, 0 };  
-                ranges[1] = new int[] { 0, 0, 0, 0, 0 };
+                ranges[0] = new int[] { 6, 0, 0, 17, 0 };
             }
+            ranges[1] = new int[] { 0, 0, 0, 0, 0 };
         }
 
         // Override for the various ATM and MML ammos
@@ -2403,8 +2402,7 @@ public class WeaponPanel extends PicMap implements ListSelectionListener, Action
             }
         }
 
-        double[] result = {avShort, avMed, avLong, avExt, maxr};
-        return result;
+        return new double[]{avShort, avMed, avLong, avExt, maxr};
 
     }
 
@@ -2605,7 +2603,6 @@ public class WeaponPanel extends PicMap implements ListSelectionListener, Action
             }
             Mounted mWeap = ((WeaponListModel) weaponList.getModel())
                     .getWeaponAt(n);
-            Mounted oldWeap = mWeap;
             Mounted oldAmmo = mWeap.getLinked();
             Mounted mAmmo = vAmmo.get(m_chAmmo.getSelectedIndex());
             // if this is a weapon bay, then this is not what we want
@@ -2658,7 +2655,7 @@ public class WeaponPanel extends PicMap implements ListSelectionListener, Action
             if (entity.isAirborne() || entity.usesWeaponBays()) {
                 WeaponType wtype = (WeaponType) mWeap.getType();
                 if (isBay) {
-                    compileWeaponBay(oldWeap, wtype.isCapital());
+                    compileWeaponBay(mWeap, wtype.isCapital());
                 } else {
                     // otherwise I need to replace range display with
                     // standard ranges and attack values

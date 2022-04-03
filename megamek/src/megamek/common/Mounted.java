@@ -634,7 +634,7 @@ public class Mounted implements Serializable, RoundUpdated, PhaseUpdated {
      */
     public void setDestroyed(boolean destroyed) {
         this.destroyed = destroyed;
-        if ((destroyed == true)
+        if ((destroyed)
                 && getType().hasFlag(MiscType.F_RADICAL_HEATSINK)) {
             if (entity != null) {
                 entity.setHasDamagedRHS(true);
@@ -660,7 +660,7 @@ public class Mounted implements Serializable, RoundUpdated, PhaseUpdated {
      */
     public void setHit(boolean hit) {
         this.hit = hit;
-        if ((hit == true)
+        if ((hit)
                 && getType().hasFlag(MiscType.F_RADICAL_HEATSINK)) {
             if (entity != null) {
                 entity.setHasDamagedRHS(true);
@@ -1225,8 +1225,7 @@ public class Mounted implements Serializable, RoundUpdated, PhaseUpdated {
                     damagePerShot++;
                 }
 
-                int damage = wtype.getRackSize() * damagePerShot;
-                return damage;
+                return wtype.getRackSize() * damagePerShot;
             }
 
             if (wtype.hasFlag(WeaponType.F_PPC) && (hasChargedCapacitor() != 0)) {
@@ -1315,13 +1314,10 @@ public class Mounted implements Serializable, RoundUpdated, PhaseUpdated {
         }
 
         // Is the entity even active?
-        if (entity.isShutDown()
-                || ((null != entity.getCrew()) && !entity.getCrew().isActive())) {
-            return false;
-        }
+        return !entity.isShutDown()
+                && ((null == entity.getCrew()) || entity.getCrew().isActive());
 
         // Otherwise, the equipment can be fired.
-        return true;
     }
 
     /**
@@ -1351,10 +1347,7 @@ public class Mounted implements Serializable, RoundUpdated, PhaseUpdated {
                 return true;
             }
         }
-        if (isDWPMounted && (getLinkedBy() != null)) {
-            return true;
-        }
-        return false;
+        return isDWPMounted && (getLinkedBy() != null);
     }
 
     /**
@@ -1363,11 +1356,8 @@ public class Mounted implements Serializable, RoundUpdated, PhaseUpdated {
      * already used up, or is locationless (oneshot ammo).
      */
     public boolean isAmmoUsable() {
-        if (destroyed || missing || m_bDumping || useless || (shotsLeft <= 0)
-                || (location == Entity.LOC_NONE)) {
-            return false;
-        }
-        return true;
+        return !destroyed && !missing && !m_bDumping && !useless && (shotsLeft > 0)
+                && (location != Entity.LOC_NONE);
     }
 
     /**
@@ -1846,18 +1836,15 @@ public class Mounted implements Serializable, RoundUpdated, PhaseUpdated {
      * @return
      */
     public boolean isInBearingsOnlyMode() {
-        if ((curMode().equals(Weapon.MODE_CAP_MISSILE_BEARING_EXT)
-                    || curMode().equals(Weapon.MODE_CAP_MISSILE_BEARING_LONG)
-                    || curMode().equals(Weapon.MODE_CAP_MISSILE_BEARING_MED)
-                    || curMode().equals(Weapon.MODE_CAP_MISSILE_BEARING_SHORT)
-                    || curMode().equals(Weapon.MODE_CAP_MISSILE_WAYPOINT_BEARING_EXT)
-                    || curMode().equals(Weapon.MODE_CAP_MISSILE_WAYPOINT_BEARING_LONG)
-                    || curMode().equals(Weapon.MODE_CAP_MISSILE_WAYPOINT_BEARING_MED)
-                    || curMode().equals(Weapon.MODE_CAP_MISSILE_WAYPOINT_BEARING_SHORT))
-                && getEntity().isSpaceborne()) {
-            return true;
-        }
-        return false;
+        return (curMode().equals(Weapon.MODE_CAP_MISSILE_BEARING_EXT)
+                || curMode().equals(Weapon.MODE_CAP_MISSILE_BEARING_LONG)
+                || curMode().equals(Weapon.MODE_CAP_MISSILE_BEARING_MED)
+                || curMode().equals(Weapon.MODE_CAP_MISSILE_BEARING_SHORT)
+                || curMode().equals(Weapon.MODE_CAP_MISSILE_WAYPOINT_BEARING_EXT)
+                || curMode().equals(Weapon.MODE_CAP_MISSILE_WAYPOINT_BEARING_LONG)
+                || curMode().equals(Weapon.MODE_CAP_MISSILE_WAYPOINT_BEARING_MED)
+                || curMode().equals(Weapon.MODE_CAP_MISSILE_WAYPOINT_BEARING_SHORT))
+                && getEntity().isSpaceborne();
     }
     
     /**
@@ -1866,15 +1853,12 @@ public class Mounted implements Serializable, RoundUpdated, PhaseUpdated {
      * @return
      */
     public boolean isInWaypointLaunchMode() {
-        if ((curMode().equals(Weapon.MODE_CAP_MISSILE_WAYPOINT_BEARING_EXT)
+        return (curMode().equals(Weapon.MODE_CAP_MISSILE_WAYPOINT_BEARING_EXT)
                 || curMode().equals(Weapon.MODE_CAP_MISSILE_WAYPOINT_BEARING_LONG)
                 || curMode().equals(Weapon.MODE_CAP_MISSILE_WAYPOINT_BEARING_MED)
                 || curMode().equals(Weapon.MODE_CAP_MISSILE_WAYPOINT_BEARING_SHORT)
                 || curMode().equals(Weapon.MODE_CAP_MISSILE_WAYPOINT))
-            && getEntity().isSpaceborne()) {
-            return true;
-        }
-        return false;
+                && getEntity().isSpaceborne();
     }
     
     /**

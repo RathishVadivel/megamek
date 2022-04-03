@@ -512,11 +512,7 @@ public class ResizeMapDialog extends JDialog implements ActionListener, KeyListe
     @Override
     public void keyReleased(KeyEvent arg0) {
         // Disable the Okay button when the input is invalid
-        if (!isExpandValid()) {
-            okayButton.setEnabled(false);
-        } else {
-            okayButton.setEnabled(true);
-        }
+        okayButton.setEnabled(isExpandValid());
 
         // Give notice when having an odd west expansion and no south expansion
         if (isExpandWestProblem()) {

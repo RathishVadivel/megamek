@@ -293,7 +293,6 @@ public class WeaponAttackAction extends AbstractAttackAction implements Serializ
         final WeaponType wtype = (WeaponType) type;
 
         Targetable swarmSecondaryTarget = target;
-        Targetable swarmPrimaryTarget = oldTarget;
         if (exchangeSwarmTarget) {
             // this is a swarm attack against a new target
             // first, exchange original and new targets to get all mods
@@ -546,10 +545,10 @@ public class WeaponAttackAction extends AbstractAttackAction implements Serializ
             } else {
                 // Swarm should draw LoS between targets, not attacker, since
                 // we don't want LoS to be blocked
-                if (swarmPrimaryTarget.getTargetType() == Targetable.TYPE_ENTITY) {
-                    los = LosEffects.calculateLos(game, swarmPrimaryTarget.getTargetId(), swarmSecondaryTarget);
+                if (oldTarget.getTargetType() == Targetable.TYPE_ENTITY) {
+                    los = LosEffects.calculateLos(game, oldTarget.getTargetId(), swarmSecondaryTarget);
                 } else {
-                    los = LosEffects.calculateLos(game, swarmSecondaryTarget.getTargetId(), swarmPrimaryTarget);
+                    los = LosEffects.calculateLos(game, swarmSecondaryTarget.getTargetId(), oldTarget);
                 }
             }
 
@@ -570,10 +569,10 @@ public class WeaponAttackAction extends AbstractAttackAction implements Serializ
             if (exchangeSwarmTarget) {
                 // Swarm should draw LoS between targets, not attacker, since
                 // we don't want LoS to be blocked
-                if (swarmPrimaryTarget.getTargetType() == Targetable.TYPE_ENTITY) {
-                    los = LosEffects.calculateLos(game, swarmPrimaryTarget.getTargetId(), swarmSecondaryTarget);
+                if (oldTarget.getTargetType() == Targetable.TYPE_ENTITY) {
+                    los = LosEffects.calculateLos(game, oldTarget.getTargetId(), swarmSecondaryTarget);
                 } else {
-                    los = LosEffects.calculateLos(game, swarmSecondaryTarget.getTargetId(), swarmPrimaryTarget);
+                    los = LosEffects.calculateLos(game, swarmSecondaryTarget.getTargetId(), oldTarget);
                 }
             } else {
                 // For everything else, set up a plain old LOS
@@ -736,7 +735,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements Serializ
         // If this is a swarm LRM secondary attack, remove old target movement and terrain mods, then
         // add those for new target.
         if (exchangeSwarmTarget) {
-            toHit = handleSwarmSecondaryAttacks(game, ae, target, swarmPrimaryTarget, swarmSecondaryTarget, toHit,
+            toHit = handleSwarmSecondaryAttacks(game, ae, target, oldTarget, swarmSecondaryTarget, toHit,
                     toSubtract, eistatus, aimingAt, aimingMode, weapon, atype, munition, isECMAffected,
                     inSameBuilding, underWater);
         }
@@ -1558,11 +1557,8 @@ public class WeaponAttackAction extends AbstractAttackAction implements Serializ
             // Variable setup
             
             // "Cool" mode for vehicle flamer requires coolant ammo
-            boolean vf_cool = false;
-            if (atype != null && ammo != null && (((AmmoType) ammo.getType()).getMunitionType() == AmmoType.M_COOLANT)) {
-                vf_cool = true;
-            }
-            
+            boolean vf_cool = atype != null && ammo != null && (((AmmoType) ammo.getType()).getMunitionType() == AmmoType.M_COOLANT);
+
             // Anti-Infantry weapons can only target infantry
             if (wtype.hasFlag(WeaponType.F_INFANTRY_ONLY)) {
                 if ((te != null) && !(te instanceof Infantry)) {

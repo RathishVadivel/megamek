@@ -660,15 +660,11 @@ public class FighterSquadron extends Aero {
         // fighter squadrons can also load other fighter squadrons provided
         // there is enough space
         // and the loadee is not empty
-        if ((unit instanceof FighterSquadron)
+        return (unit instanceof FighterSquadron)
                 && !unit.isEnemyOf(this)
                 && (getId() != unit.getId())
                 && (((FighterSquadron) unit).fighters.size() > 0)
-                && ((fighters.size() + ((FighterSquadron) unit).fighters.size()) <= getMaxSize())) {
-            return true;
-        }
-
-        return false;
+                && ((fighters.size() + ((FighterSquadron) unit).fighters.size()) <= getMaxSize());
     }
 
     /**

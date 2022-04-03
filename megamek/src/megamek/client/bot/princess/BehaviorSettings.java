@@ -858,12 +858,8 @@ public class BehaviorSettings implements Serializable {
         if (!priorityUnitTargets.equals(that.priorityUnitTargets)) {
             return false;
         }
-        
-        if (!ignoredUnitTargets.equals(that.ignoredUnitTargets)) {
-            return false;
-        }
 
-        return true;
+        return ignoredUnitTargets.equals(that.ignoredUnitTargets);
     }
 
     @Override

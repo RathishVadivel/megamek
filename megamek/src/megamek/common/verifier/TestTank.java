@@ -651,10 +651,8 @@ public class TestTank extends TestEntity {
                     buff.append(StringUtil.makeLength(mount.getName(), 30));
                     buff.append(mount.getType().getTankSlots(tank)).append("\n");
                     addedCargo = true;
-                    continue;
-                } else {
-                    continue;
                 }
+                continue;
             }
             if (!((mount.getType() instanceof AmmoType) || Arrays.asList(
                     EquipmentType.armorNames).contains(

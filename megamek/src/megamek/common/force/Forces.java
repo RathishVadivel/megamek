@@ -501,10 +501,7 @@ public final class Forces implements Serializable {
             }
             forceIds.remove(toplevel.getId());
         }
-        if (!forceIds.isEmpty()) {
-            return false;
-        }
-        return true;
+        return forceIds.isEmpty();
     }
     
     /** 

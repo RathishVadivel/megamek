@@ -1272,11 +1272,7 @@ public class RandomMapPanelAdvanced extends JPanel {
             return false;
         }
 
-        if (!isFieldVerified(specialFxField)) {
-            return false;
-        }
-
-        return true;
+        return isFieldVerified(specialFxField);
     }
 
     /**

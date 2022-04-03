@@ -1003,9 +1003,7 @@ public class LandAirMech extends BipedMech implements IAero, IBomber {
         }
 
         if (toMode == CONV_MODE_AIRMECH) {
-            if (getLAMType() == LAM_BIMODAL) {
-                return false;
-            }
+            return getLAMType() != LAM_BIMODAL;
         } else if (toMode == CONV_MODE_FIGHTER) {
             // Standard LAMs can convert from mech to fighter mode in a single
             // round on a space map

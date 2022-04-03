@@ -169,14 +169,11 @@ public class WeaponHandler implements AttackHandler, Serializable {
                 || (waa.isGroundToAir(game) && (!(wtype.isSubCapital() || wtype.isCapital())))) {
             return false;
         }
-        if (target instanceof Dropship 
-                && waa.isAirToGround(game)
-                && !ae.usesWeaponBays()) {
-            //Prevents a grounded dropship using individual weapons from engaging with AMSBays unless attacked by a dropship or capital fighter
-            //You can get some blank missile weapons fire reports due to the attackvalue / ndamageperhit conversion if this isn't done
-            return false;
-        }
-        return true;
+        //Prevents a grounded dropship using individual weapons from engaging with AMSBays unless attacked by a dropship or capital fighter
+        //You can get some blank missile weapons fire reports due to the attackvalue / ndamageperhit conversion if this isn't done
+        return !(target instanceof Dropship)
+                || !waa.isAirToGround(game)
+                || ae.usesWeaponBays();
     }
     
     /**
@@ -400,10 +397,7 @@ public class WeaponHandler implements AttackHandler, Serializable {
      */
     @Override
     public boolean cares(GamePhase phase) {
-        if (phase == GamePhase.FIRING) {
-            return true;
-        }
-        return false;
+        return phase == GamePhase.FIRING;
     }
 
     /**
@@ -461,11 +455,8 @@ public class WeaponHandler implements AttackHandler, Serializable {
 
         // TW, pg. 171 - shots that miss a target in a building don't damage the
         // building, unless the attacker is adjacent
-        if (!bldgDamagedOnMiss
-                || (toHit.getValue() == TargetRoll.AUTOMATIC_FAIL)) {
-            return false;
-        }
-        return true;
+        return bldgDamagedOnMiss
+                && (toHit.getValue() != TargetRoll.AUTOMATIC_FAIL);
     }
 
     /**
@@ -686,8 +677,6 @@ public class WeaponHandler implements AttackHandler, Serializable {
                         int counterAV = 0;
                         counterAV = getCounterAV();
                         nDamPerHit = originalAV * nweaponsHit - counterAV;
-                        hits = 1;
-                        nCluster = 1;
                     } else {
                         //If multiple large missile or non-missile weapons hit
                         Report r = new Report(3325);
@@ -698,9 +687,9 @@ public class WeaponHandler implements AttackHandler, Serializable {
                         r.newlines = 1;
                         vPhaseReport.add(r);
                         nDamPerHit = attackValue * nweaponsHit;
-                        hits = 1;
-                        nCluster = 1;
                     }
+                    hits = 1;
+                    nCluster = 1;
                 } 
             } else if (nCluster > 1) {
                 bSalvo = true;
@@ -1736,14 +1725,11 @@ public class WeaponHandler implements AttackHandler, Serializable {
                 || (target.getTargetType() == Targetable.TYPE_HEX_CLEAR)) {
             return true;
         }
-        if (game.getOptions().booleanOption(OptionsConstants.ADVAERORULES_AERO_SANITY)
+        return game.getOptions().booleanOption(OptionsConstants.ADVAERORULES_AERO_SANITY)
                 && target.getTargetType() == Targetable.TYPE_ENTITY
                 && ((Entity) target).isCapitalScale()
                 && !((Entity) target).isCapitalFighter()
-                && !ae.isCapitalFighter()) {
-            return true;
-        }
-        return false;
+                && !ae.isCapitalFighter();
     }
 
     protected void reportMiss(Vector<Report> vPhaseReport) {
@@ -2179,11 +2165,7 @@ public class WeaponHandler implements AttackHandler, Serializable {
     protected void setGlancingBlowFlags(Entity entityTarget) {
         // are we a glancing hit?  Check for this here, report it later
         if (game.getOptions().booleanOption(OptionsConstants.ADVCOMBAT_TACOPS_GLANCING_BLOWS)) {
-            if (roll == toHit.getValue()) {
-                bGlancing = true;
-            } else {
-                bGlancing = false;
-            }
+            bGlancing = roll == toHit.getValue();
         }
         
         // low profile glancing blows are triggered on roll = toHit or toHit - 1

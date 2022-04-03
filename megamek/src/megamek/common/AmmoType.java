@@ -447,11 +447,7 @@ public class AmmoType extends EquipmentType {
          */
 
         // General Launchers
-        if (is(other.getAmmoType()) && (getMunitionType() == other.getMunitionType())) {
-            return true;
-        }
-
-        return false;
+        return is(other.getAmmoType()) && (getMunitionType() == other.getMunitionType());
     }
 
     public int getAmmoType() {
@@ -13182,10 +13178,8 @@ public class AmmoType extends EquipmentType {
                 return true;
             }
             // Artillery
-            if (((at.getAmmoType() == T_ARROW_IV) || (at.getAmmoType() == T_LONG_TOM) || (at.getAmmoType() == T_SNIPER)
-                    || (at.getAmmoType() == T_THUMPER)) && (at.getMunitionType() == M_STANDARD)) {
-                return true;
-            }
+            return ((at.getAmmoType() == T_ARROW_IV) || (at.getAmmoType() == T_LONG_TOM) || (at.getAmmoType() == T_SNIPER)
+                    || (at.getAmmoType() == T_THUMPER)) && (at.getMunitionType() == M_STANDARD);
         }
         // TODO: mine clearance munitions
 
@@ -13706,11 +13700,7 @@ public class AmmoType extends EquipmentType {
             return false;
         } else if (ammoType.getAmmoType() != weaponType.getAmmoType()) {
             return false;
-        } else if (ammoType.getRackSize() != weaponType.getRackSize()) {
-            return false;
-        } else {
-            return true;
-        }
+        } else return ammoType.getRackSize() == weaponType.getRackSize();
     }
 
     /**

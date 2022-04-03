@@ -88,13 +88,10 @@ public final class ASFBay extends Bay {
     @Override
     public boolean canLoad(Entity unit) {
         // Assume that we cannot carry the unit.
-        boolean result = false;
+        boolean result = (unit.isFighter() && !(unit instanceof FighterSquadron)) || ((unit instanceof LandAirMech) && (unit.getConversionMode() == LandAirMech.CONV_MODE_FIGHTER));
 
         // Only ASFs or Fighter-Mode LAMs
         // (See IO Battleforce section for the rules that allow converted QVs and LAMs to use other bay types)
-        if ((unit.isFighter() && !(unit instanceof FighterSquadron)) || ((unit instanceof LandAirMech) && (unit.getConversionMode() == LandAirMech.CONV_MODE_FIGHTER))) {
-            result = true;
-        }
 
         if (getUnused() < 1) {
             result = false;

@@ -179,15 +179,12 @@ public class BombAttackHandler extends WeaponHandler {
 
                 if (!bMissed) {
                     r = new Report(3190);
-                    r.subject = subjectId;
-                    r.add(coords.getBoardNum());
-                    vPhaseReport.addElement(r);
                 } else {
                     r = new Report(3196);
-                    r.subject = subjectId;
-                    r.add(coords.getBoardNum());
-                    vPhaseReport.addElement(r);
                 }
+                r.subject = subjectId;
+                r.add(coords.getBoardNum());
+                vPhaseReport.addElement(r);
 
                 drop = coords;
                 // each bomb can scatter a different direction

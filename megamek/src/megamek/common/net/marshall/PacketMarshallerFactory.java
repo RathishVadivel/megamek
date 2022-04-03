@@ -28,15 +28,13 @@ public class PacketMarshallerFactory {
     }
 
     public PacketMarshaller getMarshaller(int marshallingType) {
-        switch (marshallingType) {
-            case PacketMarshaller.NATIVE_SERIALIZATION_MARSHALING:
-                if (nativeSerializationMarshaller == null) {
-                    nativeSerializationMarshaller = new NativeSerializationMarshaller();
-                }
-                return nativeSerializationMarshaller;
-            default:
-                return null;
+        if (marshallingType == PacketMarshaller.NATIVE_SERIALIZATION_MARSHALING) {
+            if (nativeSerializationMarshaller == null) {
+                nativeSerializationMarshaller = new NativeSerializationMarshaller();
+            }
+            return nativeSerializationMarshaller;
         }
+        return null;
     }
 
 }

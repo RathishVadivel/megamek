@@ -154,14 +154,10 @@ public class PrephaseDisplay extends StatusBarPhaseDisplay implements
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -176,14 +172,10 @@ public class PrephaseDisplay extends StatusBarPhaseDisplay implements
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override

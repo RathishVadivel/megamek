@@ -56,9 +56,7 @@ public class TargetRollModifier implements Serializable {
 
         if (cumulative != that.cumulative) return false;
         if (value != that.value) return false;
-        if (!desc.equals(that.desc)) return false;
-
-        return true;
+        return desc.equals(that.desc);
     }
 
     @Override

@@ -134,11 +134,7 @@ public class VTOL extends Tank implements IBomber {
         if (hex.containsTerrain(Terrains.IMPASSABLE)) {
             return true;
         }
-        if (hex.containsTerrain(Terrains.SPACE) && doomedInSpace()) {
-            return true;
-        }
-
-        return false;
+        return hex.containsTerrain(Terrains.SPACE) && doomedInSpace();
     }
 
     /*

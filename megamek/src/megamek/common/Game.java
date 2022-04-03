@@ -1824,7 +1824,7 @@ public class Game implements Serializable {
             return Entity.NONE;
         }
         int startingIndex = i;
-        while (!((hasLooped == true) && (i == startingIndex))) {
+        while (!((hasLooped) && (i == startingIndex))) {
             final Entity entity = entities.get(i);
             if (turn.isValidEntity(entity, this)) {
                 return entity.getId();
@@ -1856,7 +1856,7 @@ public class Game implements Serializable {
             i = entities.size() - 1;
         }
         int startingIndex = i;
-        while (!((hasLooped == true) && (i == startingIndex))) {
+        while (!((hasLooped) && (i == startingIndex))) {
             final Entity entity = entities.get(i);
             if (turn.isValidEntity(entity, this)) {
                 return entity.getId();
@@ -1966,9 +1966,7 @@ public class Game implements Serializable {
             }
 
             // Can that transport unload the unit?
-            if (transport.isImmobile() || (0 == transport.getWalkMP())) {
-                return true;
-            }
+            return transport.isImmobile() || (0 == transport.getWalkMP());
         }
         return false;
     }
@@ -2163,17 +2161,14 @@ public class Game implements Serializable {
         }
 
 
-        boolean useInfantryMoveLaterCheck = true;
+        boolean useInfantryMoveLaterCheck = (!getOptions().booleanOption(OptionsConstants.INIT_INF_MOVE_LATER) ||
+                (!(entity instanceof Infantry))) &&
+                (!getOptions().booleanOption(OptionsConstants.INIT_PROTOS_MOVE_LATER) ||
+                        (!(entity instanceof Protomech)));
         // If we have the "infantry move later" or "protos move later" optional
         //  rules, then we may be removing an infantry unit that would be
         //  considered invalid unless we don't consider the extra validity
         //  checks.
-        if ((getOptions().booleanOption(OptionsConstants.INIT_INF_MOVE_LATER) &&
-             (entity instanceof Infantry)) ||
-            (getOptions().booleanOption(OptionsConstants.INIT_PROTOS_MOVE_LATER) &&
-             (entity instanceof Protomech))) {
-            useInfantryMoveLaterCheck = false;
-        }
 
         for (int i = turnVector.size() - 1; i >= turnIndex; i--) {
             GameTurn turn = turnVector.elementAt(i);

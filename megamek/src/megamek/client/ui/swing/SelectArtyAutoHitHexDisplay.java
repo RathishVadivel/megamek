@@ -343,14 +343,10 @@ public class SelectArtyAutoHitHexDisplay extends StatusBarPhaseDisplay {
 
             @Override
             public boolean shouldPerformAction() {
-                if (!clientgui.getClient().isMyTurn()
-                        || clientgui.getBoardView().getChatterBoxActive()
-                        || display.isIgnoringEvents()
-                        || !display.isVisible()) {
-                    return false;
-                } else {
-                    return true;
-                }
+                return clientgui.getClient().isMyTurn()
+                        && !clientgui.getBoardView().getChatterBoxActive()
+                        && !display.isIgnoringEvents()
+                        && display.isVisible();
             }
 
             private boolean thisKeyPressed = false;

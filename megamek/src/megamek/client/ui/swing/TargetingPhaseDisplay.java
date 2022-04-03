@@ -186,14 +186,10 @@ public class TargetingPhaseDisplay extends StatusBarPhaseDisplay implements
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || display.isIgnoringEvents()
-                                || !display.isVisible()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && !display.isIgnoringEvents()
+                                && display.isVisible();
                     }
 
                     @Override
@@ -208,15 +204,11 @@ public class TargetingPhaseDisplay extends StatusBarPhaseDisplay implements
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()
-                                || !buttons.get(TargetingCommand.FIRE_FIRE).isEnabled()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents()
+                                && buttons.get(TargetingCommand.FIRE_FIRE).isEnabled();
                     }
 
                     @Override
@@ -231,14 +223,10 @@ public class TargetingPhaseDisplay extends StatusBarPhaseDisplay implements
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -253,14 +241,10 @@ public class TargetingPhaseDisplay extends StatusBarPhaseDisplay implements
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -275,14 +259,10 @@ public class TargetingPhaseDisplay extends StatusBarPhaseDisplay implements
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -298,14 +278,10 @@ public class TargetingPhaseDisplay extends StatusBarPhaseDisplay implements
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -320,14 +296,10 @@ public class TargetingPhaseDisplay extends StatusBarPhaseDisplay implements
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -342,14 +314,10 @@ public class TargetingPhaseDisplay extends StatusBarPhaseDisplay implements
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -364,14 +332,10 @@ public class TargetingPhaseDisplay extends StatusBarPhaseDisplay implements
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || display.isIgnoringEvents()
-                                || !display.isVisible()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && !display.isIgnoringEvents()
+                                && display.isVisible();
                     }
 
                     @Override
@@ -386,14 +350,10 @@ public class TargetingPhaseDisplay extends StatusBarPhaseDisplay implements
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || display.isIgnoringEvents()
-                                || !display.isVisible()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && !display.isIgnoringEvents()
+                                && display.isVisible();
                     }
 
                     @Override
@@ -408,13 +368,9 @@ public class TargetingPhaseDisplay extends StatusBarPhaseDisplay implements
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override

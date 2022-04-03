@@ -41,11 +41,8 @@ class ServerLobbyHelper {
      * if the client sending it is the owner
      */
     static boolean isNewForceValid(Game game, Force force) {
-        if ((!force.isTopLevel() && !game.getForces().contains(force.getParentId()))
-                || (force.getChildCount() != 0)) {
-            return false;
-        }
-        return true;
+        return (force.isTopLevel() || game.getForces().contains(force.getParentId()))
+                && (force.getChildCount() == 0);
     }
 
     /** 

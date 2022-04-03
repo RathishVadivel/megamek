@@ -69,8 +69,7 @@ public abstract class ACWeapon extends AmmoWeapon {
         Mounted weapon = game.getEntity(waa.getEntityId()).getEquipment(waa.getWeaponId());
 
         if (weapon.curMode().equals("Rapid")) {
-            RapidfireACWeaponHandler ah = new RapidfireACWeaponHandler(toHit, waa, game, server);
-            return ah;
+            return new RapidfireACWeaponHandler(toHit, waa, game, server);
         }
         if (atype.getMunitionType() == AmmoType.M_ARMOR_PIERCING) {
             return new ACAPHandler(toHit, waa, game, server);

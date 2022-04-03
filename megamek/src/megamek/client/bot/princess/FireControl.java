@@ -3161,8 +3161,7 @@ public class FireControl {
     @Nullable
     public FindClubAction getFindClubAction(Entity shooter) {
         if (FindClubAction.canMechFindClub(shooter.getGame(), shooter.getId())) {
-            FindClubAction findClubAction = new FindClubAction(shooter.getId());
-            return findClubAction;
+            return new FindClubAction(shooter.getId());
         }
         
         return null;
@@ -3249,8 +3248,7 @@ public class FireControl {
         }
         
         if (bestTarget != null) {
-            SearchlightAttackAction slaa = new SearchlightAttackAction(shooter.getId(), bestTarget.getTargetType(), bestTarget.getTargetId());
-            return slaa;
+            return new SearchlightAttackAction(shooter.getId(), bestTarget.getTargetType(), bestTarget.getTargetId());
         }
         
         return null;

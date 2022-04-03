@@ -635,9 +635,7 @@ public class BuildingBlock {
      */
     public Vector<String> getAllDataAsVector() {
 
-        Vector<String> theData = rawData; // can I jsut return this?
-
-        return theData;
+        return rawData;
 
     }
 
@@ -734,10 +732,6 @@ public class BuildingBlock {
         if (findStartIndex(blockName) == -1) {
             return false;
         }
-        if (findEndIndex(blockName) == -1) {
-            return false;
-        }
-
-        return true;
+        return findEndIndex(blockName) != -1;
     }
 }

@@ -3500,7 +3500,7 @@ public class Server implements Runnable {
                         });
                 HashSet<Integer> points = new HashSet<>();
                 int numPlayerProtos = 0;
-                for (; playerProtos.hasNext(); ) {
+                while (playerProtos.hasNext()) {
                     Entity proto = playerProtos.next();
                     numPlayerProtos++;
                     points.add((int) proto.getUnitNumber());
@@ -3850,13 +3850,9 @@ public class Server implements Runnable {
                 addReport(r);
                 if (hasEven) {
                     r = new Report(1021, Report.PUBLIC);
-                    if ((game.getOptions().booleanOption(OptionsConstants.INIT_INF_DEPLOY_EVEN)
+                    r.choose((game.getOptions().booleanOption(OptionsConstants.INIT_INF_DEPLOY_EVEN)
                             || game.getOptions().booleanOption(OptionsConstants.INIT_PROTOS_MOVE_EVEN))
-                            && !(game.getLastPhase() == GamePhase.END_REPORT)) {
-                        r.choose(true);
-                    } else {
-                        r.choose(false);
-                    }
+                            && !(game.getLastPhase() == GamePhase.END_REPORT));
                     r.indent();
                     r.newlines = 2;
                     addReport(r);
@@ -4830,11 +4826,7 @@ public class Server implements Runnable {
             Entity tm = game.getEntity(missileId);
             if ((null != tm) && !tm.isDestroyed()
                 && (tm instanceof TeleMissile)) {
-                if (LosEffects.calculateLOS(game, entity, tm).canSee()) {
-                    ((TeleMissile) tm).setOutContact(false);
-                } else {
-                    ((TeleMissile) tm).setOutContact(true);
-                }
+                ((TeleMissile) tm).setOutContact(!LosEffects.calculateLOS(game, entity, tm).canSee());
                 entityUpdate(tm.getId());
             }
         }
@@ -9506,17 +9498,12 @@ public class Server implements Runnable {
         if ((entity instanceof Mech) && entity.hasEngine() && ((Mech) entity).isIndustrial()
                 && !entity.hasEnvironmentalSealing()
                 && (entity.getEngine().getEngineType() == Engine.COMBUSTION_ENGINE)) {
-            if ((!entity.isProne()
+            ((Mech) entity).setJustMovedIntoIndustrialKillingWater((!entity.isProne()
                     && (game.getBoard().getHex(entity.getPosition())
-                            .terrainLevel(Terrains.WATER) >= 2))
+                    .terrainLevel(Terrains.WATER) >= 2))
                     || (entity.isProne()
-                            && (game.getBoard().getHex(entity.getPosition())
-                                    .terrainLevel(Terrains.WATER) == 1))) {
-                ((Mech) entity).setJustMovedIntoIndustrialKillingWater(true);
-
-            } else {
-                ((Mech) entity).setJustMovedIntoIndustrialKillingWater(false);
-            }
+                    && (game.getBoard().getHex(entity.getPosition())
+                    .terrainLevel(Terrains.WATER) == 1)));
         }
     }
 
@@ -12868,11 +12855,7 @@ public class Server implements Runnable {
                                 r.indent(3);
                                 r.subject = violation.getId();
                                 r.addDesc(violation);
-                                if (mp.getLastStep().getType() == MoveStepType.FORWARDS) {
-                                    r.choose(false);
-                                } else {
-                                    r.choose(true);
-                                }
+                                r.choose(mp.getLastStep().getType() != MoveStepType.FORWARDS);
                                 r.add(mp.getLastStep().getPosition().getBoardNum());
                                 vPhaseReport.add(r);
                                 // Move unit
@@ -14355,11 +14338,7 @@ public class Server implements Runnable {
                 int roll = ent.getGhostTargetRoll();
                 r.add(target);
                 r.add(roll);
-                if (roll >= target) {
-                    r.choose(true);
-                } else {
-                    r.choose(false);
-                }
+                r.choose(roll >= target);
                 addReport(r);
             }
         }
@@ -14749,16 +14728,13 @@ public class Server implements Runnable {
             if (found) {
                 clubType = EquipmentType.get(EquipmentTypeLookup.GIRDER_CLUB);
                 r = new Report(3045);
-                r.subject = entity.getId();
-                r.addDesc(entity);
-                addReport(r);
             } else {
                 // Sorry, no club for you.
                 r = new Report(3050);
-                r.subject = entity.getId();
-                r.addDesc(entity);
-                addReport(r);
             }
+            r.subject = entity.getId();
+            r.addDesc(entity);
+            addReport(r);
         }
 
         // Are there woods in the hex?
@@ -14914,10 +14890,8 @@ public class Server implements Runnable {
                 r.subject = entityId;
                 vPhaseReport.add(r);
             }
-        } else if (checkIgnition(c, nTargetRoll, bInferno, entityId,
-                vPhaseReport)) {
-            return true;
-        }
+        } else return checkIgnition(c, nTargetRoll, bInferno, entityId,
+                vPhaseReport);
         return false;
     }
 
@@ -21972,15 +21946,12 @@ public class Server implements Runnable {
                     damage = 0;
                     r = new Report(6050); // For some reason this report never
                     // actually shows up...
-                    r.subject = te_n;
-                    r.indent(2);
-                    vDesc.addElement(r);
                 } else {
                     r = new Report(6045); // ...but this one displays just fine.
-                    r.subject = te_n;
-                    r.indent(2);
-                    vDesc.addElement(r);
                 }
+                r.subject = te_n;
+                r.indent(2);
+                vDesc.addElement(r);
                 break;
             case NONPENETRATING:
                 if (!isPlatoon) {
@@ -21997,15 +21968,12 @@ public class Server implements Runnable {
                 if (!isPlatoon) {
                     damage /= 2;
                     r = new Report(6060);
-                    r.subject = te_n;
-                    r.indent(2);
-                    vDesc.addElement(r);
                 } else {
                     r = new Report(6055);
-                    r.subject = te_n;
-                    r.indent(2);
-                    vDesc.addElement(r);
                 }
+                r.subject = te_n;
+                r.indent(2);
+                vDesc.addElement(r);
                 break;
             case ACID:
                 if (isFerroFibrousTarget || reactiveArmor || reflectiveArmor
@@ -23510,12 +23478,9 @@ public class Server implements Runnable {
             HitData nextPassHit = passHit;
             do {
                 int armorType = passenger.getArmorType(nextPassHit.getLocation());
-                boolean armorDamageReduction = false;
-                if (((armorType == EquipmentType.T_ARMOR_BA_REACTIVE)
+                boolean armorDamageReduction = ((armorType == EquipmentType.T_ARMOR_BA_REACTIVE)
                         && ((hit.getGeneralDamageType() == HitData.DAMAGE_MISSILE)))
-                        || (hit.getGeneralDamageType() == HitData.DAMAGE_ARMOR_PIERCING_MISSILE)) {
-                    armorDamageReduction = true;
-                }
+                        || (hit.getGeneralDamageType() == HitData.DAMAGE_ARMOR_PIERCING_MISSILE);
                 // Check for reflective armor
                 if ((armorType == EquipmentType.T_ARMOR_BA_REFLECTIVE)
                     && (hit.getGeneralDamageType() == HitData.DAMAGE_ENERGY)) {
@@ -24595,11 +24560,7 @@ public class Server implements Runnable {
 
         // Shield objects are not useless when they take one crit.
         // Shields can be critted and still be usable.
-        if ((eqType instanceof MiscType) && ((MiscType) eqType).isShield()) {
-            mounted.setHit(false);
-        } else {
-            mounted.setHit(true);
-        }
+        mounted.setHit((!(eqType instanceof MiscType)) || !((MiscType) eqType).isShield());
 
         if ((eqType instanceof MiscType) && eqType.hasFlag(MiscType.F_EMERGENCY_COOLANT_SYSTEM)) {
             ((Mech) en).setHasDamagedCoolantSystem(true);
@@ -27305,11 +27266,7 @@ public class Server implements Runnable {
                 r.add(entity.getLocationAbbr(loc));
                 r.add(breachroll);
                 r.newlines = 0;
-                if (breachroll >= target) {
-                    r.choose(false);
-                } else {
-                    r.choose(true);
-                }
+                r.choose(breachroll < target);
                 vDesc.addElement(r);
             }
             // Breach by damage or lack of armor.
@@ -28153,15 +28110,12 @@ public class Server implements Runnable {
             // we get Terrain.LEVEL_NONE, i.e. Integer.minValue...
             waterDepth = fallHex.terrainLevel(Terrains.WATER);
         }
-        boolean fallOntoBridge = false;
-        // only fall onto the bridge if we were in the hex and on it,
-        // or we fell from a hex that the bridge exits to
-        if ((entity.climbMode() && (entity.getPosition() != fallPos)
+        boolean fallOntoBridge = (entity.climbMode() && (entity.getPosition() != fallPos)
                 && fallHex.containsTerrain(Terrains.BRIDGE)
                 && fallHex.containsTerrainExit(Terrains.BRIDGE, fallPos.direction(entity.getPosition())))
-                || (entity.getElevation() == fallHex.terrainLevel(Terrains.BRIDGE_ELEV))) {
-            fallOntoBridge = true;
-        }
+                || (entity.getElevation() == fallHex.terrainLevel(Terrains.BRIDGE_ELEV));
+        // only fall onto the bridge if we were in the hex and on it,
+        // or we fell from a hex that the bridge exits to
         int bridgeElev = fallHex.terrainLevel(Terrains.BRIDGE_ELEV);
         int buildingElev = fallHex.terrainLevel(Terrains.BLDG_ELEV);
         int damageHeight = fallHeight;
@@ -32610,15 +32564,12 @@ public class Server implements Runnable {
                     }
                     if (bldg.getType() == Building.WALL) {
                         r = new Report(3442);
-                        r.type = Report.PUBLIC;
-                        r.indent(0);
-                        vPhaseReport.add(r);
                     } else {
                         r = new Report(3440);
-                        r.type = Report.PUBLIC;
-                        r.indent(0);
-                        vPhaseReport.add(r);
                     }
+                    r.type = Report.PUBLIC;
+                    r.indent(0);
+                    vPhaseReport.add(r);
                 } else if ((curCF < startingCF) && (damage > damageThresh)) {
                     // need to check for crits
                     // don't bother unless we have some gun emplacements

@@ -542,14 +542,11 @@ public class ArtilleryBayWeaponIndirectHomingHandler extends ArtilleryBayWeaponI
      */
     @Override
     protected boolean checkPDConditions() {
-        if ((target == null) 
-                || target.getTargetType() != Targetable.TYPE_ENTITY 
-                || !advancedPD
-                || !advancedAMS
-                || waa.getCounterEquipment() == null) {
-            return false;
-        }
-        return true;
+        return (target != null)
+                && target.getTargetType() == Targetable.TYPE_ENTITY
+                && advancedPD
+                && advancedAMS
+                && waa.getCounterEquipment() != null;
     }
     
     /**

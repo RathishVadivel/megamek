@@ -422,10 +422,7 @@ public class ArtilleryWeaponIndirectHomingHandler extends ArtilleryWeaponIndirec
     @Override
     protected boolean checkPDConditions() {
         advancedPD = game.getOptions().booleanOption(OptionsConstants.ADVAERORULES_STRATOPS_ADV_POINTDEF);
-        if ((target == null) || !advancedPD || (target.getTargetType() != Targetable.TYPE_ENTITY)) {
-            return false;
-        }
-        return true;
+        return (target != null) && advancedPD && (target.getTargetType() == Targetable.TYPE_ENTITY);
     }
         
     /**

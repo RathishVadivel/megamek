@@ -160,15 +160,11 @@ public class PointblankShotDisplay extends FiringDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.isProcessingPointblankShot()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || display.isIgnoringEvents()
-                                || !display.isVisible()
-                                || !butDone.isEnabled()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.isProcessingPointblankShot()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && !display.isIgnoringEvents()
+                                && display.isVisible()
+                                && butDone.isEnabled();
                     }
 
                     @Override
@@ -183,14 +179,10 @@ public class PointblankShotDisplay extends FiringDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.isProcessingPointblankShot()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || display.isIgnoringEvents()
-                                || !display.isVisible()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.isProcessingPointblankShot()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && !display.isIgnoringEvents()
+                                && display.isVisible();
                     }
 
                     @Override
@@ -205,14 +197,10 @@ public class PointblankShotDisplay extends FiringDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.isProcessingPointblankShot()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.isProcessingPointblankShot()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -228,14 +216,10 @@ public class PointblankShotDisplay extends FiringDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.isProcessingPointblankShot()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.isProcessingPointblankShot()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -251,16 +235,12 @@ public class PointblankShotDisplay extends FiringDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.isProcessingPointblankShot()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()
-                                || !buttons.get(FiringCommand.FIRE_FIRE)
-                                        .isEnabled()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.isProcessingPointblankShot()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents()
+                                && buttons.get(FiringCommand.FIRE_FIRE)
+                                .isEnabled();
                     }
 
                     @Override
@@ -275,14 +255,10 @@ public class PointblankShotDisplay extends FiringDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.isProcessingPointblankShot()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.isProcessingPointblankShot()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -297,14 +273,10 @@ public class PointblankShotDisplay extends FiringDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.isProcessingPointblankShot()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.isProcessingPointblankShot()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override
@@ -319,14 +291,10 @@ public class PointblankShotDisplay extends FiringDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || display.isIgnoringEvents()
-                                || !display.isVisible()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && !display.isIgnoringEvents()
+                                && display.isVisible();
                     }
 
                     @Override
@@ -341,14 +309,10 @@ public class PointblankShotDisplay extends FiringDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (!clientgui.getClient().isMyTurn()
-                                || clientgui.getBoardView().getChatterBoxActive()
-                                || display.isIgnoringEvents()
-                                || !display.isVisible()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return clientgui.getClient().isMyTurn()
+                                && !clientgui.getBoardView().getChatterBoxActive()
+                                && !display.isIgnoringEvents()
+                                && display.isVisible();
                     }
 
                     @Override
@@ -363,13 +327,9 @@ public class PointblankShotDisplay extends FiringDisplay implements ItemListener
 
                     @Override
                     public boolean shouldPerformAction() {
-                        if (clientgui.getBoardView().getChatterBoxActive()
-                                || !display.isVisible()
-                                || display.isIgnoringEvents()) {
-                            return false;
-                        } else {
-                            return true;
-                        }
+                        return !clientgui.getBoardView().getChatterBoxActive()
+                                && display.isVisible()
+                                && !display.isIgnoringEvents();
                     }
 
                     @Override

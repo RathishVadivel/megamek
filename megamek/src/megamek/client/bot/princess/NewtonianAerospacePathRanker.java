@@ -263,11 +263,7 @@ public class NewtonianAerospacePathRanker extends BasicPathRanker implements IPa
     public static boolean willFlyOffBoard(Entity entity, Coords coords) {
         OffBoardDirection offBoardDirection = calculateOffBoardDirection(entity, coords, entity.getVectors());
 
-        if (offBoardDirection == OffBoardDirection.NONE) {
-            return false;
-        }
-
-        return true;
+        return offBoardDirection != OffBoardDirection.NONE;
     }
 
     /**

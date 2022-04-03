@@ -1274,8 +1274,6 @@ public class AeroBVCalculator extends BVCalculator {
             pilotFactor = aero.getCrew().getBVSkillMultiplier(aero.getGame());
         }
 
-        int retVal = (int) Math.round(finalBV * pilotFactor);
-
-        return retVal;
+        return (int) Math.round(finalBV * pilotFactor);
     }
 }
