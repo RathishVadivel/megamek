@@ -24,6 +24,7 @@ import megamek.common.actions.AttackAction;
 import megamek.common.actions.EntityAction;
 import megamek.common.annotations.Nullable;
 import megamek.common.enums.GamePhase;
+import megamek.common.enums.RatingModifier;
 import megamek.common.event.*;
 import megamek.common.force.Forces;
 import megamek.common.options.GameOptions;
@@ -2623,7 +2624,7 @@ public class Game implements Serializable {
 
     public void end(int winner, int winnerTeam) {
         setVictoryPlayerId(winner);
-        setRating(winner);
+        setRating(winner, winnerTeam);
         setVictoryTeam(winnerTeam);
         processGameEvent(new GameEndEvent(this));
 
@@ -2692,20 +2693,24 @@ public class Game implements Serializable {
 
     /**
      *
-     * @param winner Id if player who won
+     * @param winner Id of player who won
+     * @param winningTeam Id of team who won
      *
      *
      */
-    private void setRating(int winner){
+    private void setRating(int winner, int winningTeam){
         Enumeration<Player> iter = getPlayers();
         while (iter.hasMoreElements()) {
             Player player = iter.nextElement();
             int ratingChange;
             // TODO : Implement accurate elo rating calculation
             if(player.getId() == winner){
-                ratingChange = 20;
-            } else {
-                ratingChange = -20;
+                ratingChange = RatingModifier.WINNER.getRatingModifier();
+            } else if(player.getTeam() == winningTeam) {
+                ratingChange = RatingModifier.TEAM_WINNER.getRatingModifier();
+            }
+            else {
+                ratingChange = RatingModifier.LOSER.getRatingModifier();
             }
             player.updateRating(ratingChange);
         }
