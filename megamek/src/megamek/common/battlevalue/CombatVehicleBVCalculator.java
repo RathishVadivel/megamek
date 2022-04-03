@@ -262,10 +262,6 @@ public class CombatVehicleBVCalculator extends BVCalculator {
             case WIGE:
                 typeModifier = 0.7;
                 break;
-            case NAVAL:
-            case RAIL:
-                typeModifier = 0.6;
-                break;
             default:
                 typeModifier = 0.6;
         }
@@ -357,7 +353,6 @@ public class CombatVehicleBVCalculator extends BVCalculator {
 
         if (tank.isSupportVehicle()) {
             if (tank.hasWorkingMisc(MiscType.F_ADVANCED_FIRECONTROL)) {
-                targetingSystemBVMod = 1.0;
             } else if (tank.hasWorkingMisc(MiscType.F_BASIC_FIRECONTROL)) {
                 targetingSystemBVMod = .9;
             } else {

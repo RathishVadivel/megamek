@@ -1043,7 +1043,7 @@ public class TestBot extends BotClient {
                 }
             }
         }
-        Arrays.<MoveOption>sort(move_array, new MoveOption.WeightedComparator(
+        Arrays.sort(move_array, new MoveOption.WeightedComparator(
                 1, 1));
         self.current.setState();
 

@@ -622,7 +622,6 @@ public class JumpShipBVCalculator extends BVCalculator {
             }
             bvText.append(endColumn);
             bvText.append(startColumn);
-            bvText.append("");
             bvText.append(endColumn);
             bvText.append(endRow);
             double currentArcBV = 0.0;
