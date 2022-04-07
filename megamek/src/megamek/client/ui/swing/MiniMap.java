@@ -827,11 +827,11 @@ public final class MiniMap extends JPanel implements IPreferenceChangeListener {
         int[] yPoints = new int[4];
 
         xPoints[0] = ((source.getPosition().getX() * (HEX_SIDE[zoom] + HEX_SIDE_BY_SIN30[zoom]))
-                + leftMargin + ((int) 1.5 * HEX_SIDE[zoom])) - 2;
+                + leftMargin + (HEX_SIDE[zoom])) - 2;
         yPoints[0] = (((2 * source.getPosition().getY()) + 1 + (source
                 .getPosition().getX() % 2)) * HEX_SIDE_BY_COS30[zoom]) + topMargin;
         xPoints[1] = ((target.getPosition().getX() * (HEX_SIDE[zoom] + HEX_SIDE_BY_SIN30[zoom]))
-                + leftMargin + ((int) 1.5 * HEX_SIDE[zoom])) - 2;
+                + leftMargin + (HEX_SIDE[zoom])) - 2;
         yPoints[1] = (((2 * target.getPosition().getY()) + 1 + (target
                 .getPosition().getX() % 2)) * HEX_SIDE_BY_COS30[zoom]) + topMargin;
         xPoints[2] = xPoints[1] + 2;

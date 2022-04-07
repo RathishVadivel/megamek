@@ -312,7 +312,7 @@ public class Server implements Runnable {
      */
     public static String validateServerAddress(String serverAddress) throws AbstractCommandLineParser.ParseException {
         if ((serverAddress == null) || serverAddress.isBlank()) {
-            String msg = String.format("serverAddress must not be null or empty");
+            String msg = "serverAddress must not be null or empty";
             LogManager.getLogger().error(msg);
             throw new AbstractCommandLineParser.ParseException(msg);
         }
@@ -326,13 +326,13 @@ public class Server implements Runnable {
      */
     public static String validatePlayerName(String playerName) throws AbstractCommandLineParser.ParseException {
         if (playerName == null) {
-            String msg = String.format("playerName must not be null");
+            String msg = "playerName must not be null";
             LogManager.getLogger().error(msg);
             throw new AbstractCommandLineParser.ParseException(msg);
         }
 
         if (playerName.isBlank()) {
-            String msg = String.format("playerName must not be empty string");
+            String msg = "playerName must not be empty string";
             LogManager.getLogger().error(msg);
             throw new AbstractCommandLineParser.ParseException(msg);
         }

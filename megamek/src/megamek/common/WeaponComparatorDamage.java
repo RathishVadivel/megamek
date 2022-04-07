@@ -47,17 +47,17 @@ public class WeaponComparatorDamage implements Comparator<Mounted> {
                 if (obj1.isRearMounted())
                     return -1 * ascending;
                 else if (obj2.isRearMounted())
-                    return 1 * ascending;
+                    return ascending;
                 return 0;
             }
             // Pick the weapon with the highest damage
             if (weap1.getDamage() > weap2.getDamage()) {
-                return 1 * ascending;
+                return ascending;
             } else if (weap1.getDamage() < weap2.getDamage()) {
                 return -1 * ascending;
             } else { // Break ties with heat
                 if (weap1.getHeat() > weap2.getHeat()) {
-                    return 1 * ascending;
+                    return ascending;
                 } else if (weap1.getHeat() < weap2.getHeat()) {
                     return -1 * ascending;
                 } else {

@@ -344,7 +344,7 @@ public class LobbyActions {
      * @param entity
      */
     public void customizeMech(Entity entity) {
-        if (!validateUpdate(Arrays.asList(entity))) {
+        if (!validateUpdate(List.of(entity))) {
             return;
         }
         boolean editable = client().bots.get(entity.getOwner().getName()) != null;
@@ -402,9 +402,7 @@ public class LobbyActions {
                 // Changing state to a transporting unit can update state of
                 // transported units, so update those as well
                 for (Transporter transport : entity.getTransports()) {
-                    for (Entity loaded : transport.getLoadedUnits()) {
-                        updateCandidates.add(loaded);
-                    }
+                    updateCandidates.addAll(transport.getLoadedUnits());
                 }
 
                 // Customizations to a Squadron can effect the fighters
@@ -415,9 +413,7 @@ public class LobbyActions {
                 // Do we need to update the members of our C3 network?
                 if (((c3master != null) && !c3master.equals(entity.getC3Master()))
                         || ((c3master == null) && (entity.getC3Master() != null))) {
-                    for (Entity unit : c3members) {
-                        updateCandidates.add(unit);
-                    }
+                    updateCandidates.addAll(c3members);
                 }
                 sendUpdates(updateCandidates);
             }
@@ -862,7 +858,7 @@ public class LobbyActions {
         Set<Entity> updateCandidates = new HashSet<>(entities);
         if (disconnectFirst) { // this is only true when a C3 lance is formed from SSSM
             updateCandidates.addAll(performDisconnect(entities));
-            updateCandidates.addAll(performDisconnect(Arrays.asList(master)));
+            updateCandidates.addAll(performDisconnect(List.of(master)));
         }
         int newC3nodeCount = entities.stream().mapToInt(e -> game().getC3SubNetworkMembers(e).size()).sum();
         int masC3nodeCount = game().getC3NetworkMembers(master).size();
@@ -969,7 +965,7 @@ public class LobbyActions {
             return;
         }
         Entity carrier = CollectionUtil.anyOneElement(entities);
-        if (!validateUpdate(Arrays.asList(carrier))) {
+        if (!validateUpdate(List.of(carrier))) {
             return;
         }
         Bay bay = carrier.getBayById(bayId);

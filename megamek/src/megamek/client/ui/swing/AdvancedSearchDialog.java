@@ -1038,10 +1038,7 @@ public class AdvancedSearchDialog extends JDialog implements ActionListener, Ite
 
         @Override
         public boolean isCellEditable(int row, int col) {
-            if (col == COL_QTY) {
-                return true;
-            }
-            return false;
+            return col == COL_QTY;
         }
 
         // fill table with values
@@ -1152,10 +1149,7 @@ public class AdvancedSearchDialog extends JDialog implements ActionListener, Ite
 
         @Override
         public boolean isCellEditable(int row, int col) {
-            if (col == COL_QTY) {
-                return true;
-            }
-            return false;
+            return col == COL_QTY;
         }
 
         // fill table with values

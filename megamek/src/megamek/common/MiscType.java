@@ -507,7 +507,7 @@ public class MiscType extends EquipmentType {
                 if (entity.getWeight() <= 55.0) {
                     return 0.5 * multiplier;
                 } else if (entity.getWeight() <= 85.0) {
-                    return 1.0 * multiplier;
+                    return multiplier;
                 } else {
                     return 2.0 * multiplier;
                 }

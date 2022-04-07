@@ -94,11 +94,11 @@ public class TdbFileTest {
                     if (!foundSRM && "SRM 4".equals(m.getName())) {
                         foundSRM = true;
                     } else if (foundSRM && "SRM 4".equals(m.getName())) {
-                        assertTrue("Only 1 SRM 4 in CT", false);
+                        fail("Only 1 SRM 4 in CT");
                     }
-                    
-                    assertFalse("Found a Medium Laser in CT", "Medium Laser".equals(m.getName()));
-                    assertFalse("Found a SRM-4 ammo in CT", "SRM 4 Ammo".equals(m.getName()));
+
+                    assertNotEquals("Found a Medium Laser in CT", "Medium Laser", m.getName());
+                    assertNotEquals("Found a SRM-4 ammo in CT", "SRM 4 Ammo", m.getName());
                     assertFalse("Found a Heat Sink in CT", m.getName().contains("Heat Sink"));
                     break;
                 case Mech.LOC_RT:
@@ -109,38 +109,38 @@ public class TdbFileTest {
                     if (!foundAmmo && "SRM 4 Ammo".equals(m.getName())) {
                         foundAmmo = true;
                     } else if (foundAmmo && "SRM 4 Ammo".equals(m.getName())) {
-                        assertTrue("Only 1 SRM 4 ammo in RT", false);
+                        fail("Only 1 SRM 4 ammo in RT");
                     }
-                    
-                    assertFalse("Found a SRM-4 in RT", "SRM 4".equals(m.getName()));
-                    assertFalse("Found a Medium Laser in RT", "Medium Laser".equals(m.getName()));
+
+                    assertNotEquals("Found a SRM-4 in RT", "SRM 4", m.getName());
+                    assertNotEquals("Found a Medium Laser in RT", "Medium Laser", m.getName());
                     break;
                 case Mech.LOC_LT:
                     if ("Jump Jet".equals(m.getName())) {
                         jjLT++;
                     }
-                    
-                    assertFalse("Found a SRM-4 in LT", "SRM 4".equals(m.getName()));
-                    assertFalse("Found a Medium Laser in LT", "Medium Laser".equals(m.getName()));
-                    assertFalse("Found a SRM-4 ammo in LT", "SRM 4 Ammo".equals(m.getName()));
+
+                    assertNotEquals("Found a SRM-4 in LT", "SRM 4", m.getName());
+                    assertNotEquals("Found a Medium Laser in LT", "Medium Laser", m.getName());
+                    assertNotEquals("Found a SRM-4 ammo in LT", "SRM 4 Ammo", m.getName());
                     break;
                 case Mech.LOC_RARM:
                     if ("Medium Laser".equals(m.getName())) {
                         mlRARM++;
                     }
-                    
-                    assertFalse("Found a SRM-4 in RARM", "SRM 4".equals(m.getName()));
-                    assertFalse("Found a Jump Jet in RARM", "Jump Jet".equals(m.getName()));
-                    assertFalse("Found a SRM-4 ammo in RARM", "SRM 4 Ammo".equals(m.getName()));
+
+                    assertNotEquals("Found a SRM-4 in RARM", "SRM 4", m.getName());
+                    assertNotEquals("Found a Jump Jet in RARM", "Jump Jet", m.getName());
+                    assertNotEquals("Found a SRM-4 ammo in RARM", "SRM 4 Ammo", m.getName());
                     break;
                 case Mech.LOC_LARM:
                     if ("Medium Laser".equals(m.getName())) {
                         mlLARM++;
                     }
-                    
-                    assertFalse("Found a SRM-4 in LARM", "SRM 4".equals(m.getName()));
-                    assertFalse("Found a Jump Jet in LARM", "Jump Jet".equals(m.getName()));
-                    assertFalse("Found a SRM-4 ammo in LARM", "SRM 4 Ammo".equals(m.getName()));
+
+                    assertNotEquals("Found a SRM-4 in LARM", "SRM 4", m.getName());
+                    assertNotEquals("Found a Jump Jet in LARM", "Jump Jet", m.getName());
+                    assertNotEquals("Found a SRM-4 ammo in LARM", "SRM 4 Ammo", m.getName());
                     break;
             }
         }
@@ -213,17 +213,17 @@ public class TdbFileTest {
                     if (!foundSSRM && "Streak SRM 2".equals(m.getName())) {
                         foundSSRM = true;
                     } else if (foundSSRM && "Streak SRM 2".equals(m.getName())) {
-                        assertTrue("Only 1 SSRM-2 in CT", false);
+                        fail("Only 1 SSRM-2 in CT");
                     }
                     
                     if (!foundAmmo && "Streak SRM 2 Ammo".equals(m.getName())) {
                         foundAmmo = true;
                     } else if (foundAmmo && "Streak SRM 2 Ammo".equals(m.getName())) {
-                        assertTrue("Only 1 SSRM-2 ammo in CT", false);
+                        fail("Only 1 SSRM-2 ammo in CT");
                     }
-                    
-                    assertFalse("Found a Medium Laser in CT", "Medium Laser".equals(m.getName()));
-                    assertFalse("Found a Jump Jet in CT", "Jump Jet".equals(m.getName()));
+
+                    assertNotEquals("Found a Medium Laser in CT", "Medium Laser", m.getName());
+                    assertNotEquals("Found a Jump Jet in CT", "Jump Jet", m.getName());
                     assertFalse("Found a Heat Sink in CT", m.getName().contains("Heat Sink"));
                     break;
                 case Mech.LOC_RT:
@@ -234,10 +234,10 @@ public class TdbFileTest {
                     if ("Medium Laser".equals(m.getName())) {
                         mlRT++;
                     }
-                    
-                    assertFalse("Found a SSRM-2 in RT", "Streak SRM 2".equals(m.getName()));
-                    assertFalse("Found SSRM-2 ammo in RT", "Streak SRM 2 Ammo".equals(m.getName()));
-                    assertFalse("Found a Jump Jet in RT", "Jump Jet".equals(m.getName()));
+
+                    assertNotEquals("Found a SSRM-2 in RT", "Streak SRM 2", m.getName());
+                    assertNotEquals("Found SSRM-2 ammo in RT", "Streak SRM 2 Ammo", m.getName());
+                    assertNotEquals("Found a Jump Jet in RT", "Jump Jet", m.getName());
                     break;
                 case Mech.LOC_LT:
                     if ("Double Heat Sink".equals(m.getName())) {
@@ -247,10 +247,10 @@ public class TdbFileTest {
                     if ("Medium Laser".equals(m.getName())) {
                         mlLT++;
                     }
-                    
-                    assertFalse("Found a SSRM-2 in LT", "Streak SRM 2".equals(m.getName()));
-                    assertFalse("Found SSRM-2 ammo in LT", "Streak SRM 2 Ammo".equals(m.getName()));
-                    assertFalse("Found a Jump Jet in LT", "Jump Jet".equals(m.getName()));
+
+                    assertNotEquals("Found a SSRM-2 in LT", "Streak SRM 2", m.getName());
+                    assertNotEquals("Found SSRM-2 ammo in LT", "Streak SRM 2 Ammo", m.getName());
+                    assertNotEquals("Found a Jump Jet in LT", "Jump Jet", m.getName());
                     break;
                 case Mech.LOC_RARM:
                     if ("Jump Jet".equals(m.getName())) {
@@ -258,9 +258,9 @@ public class TdbFileTest {
                     }
                     
                     assertFalse("Found a Heat Sink in RARM", m.getName().contains("Heat Sink"));
-                    assertFalse("Found a Medium Laser in RARM", "Medium Laser".equals(m.getName()));
-                    assertFalse("Found a SSRM-2 in RARM", "Streak SRM 2".equals(m.getName()));
-                    assertFalse("Found SSRM-2 ammo in RARM", "Streak SRM 2 Ammo".equals(m.getName()));
+                    assertNotEquals("Found a Medium Laser in RARM", "Medium Laser", m.getName());
+                    assertNotEquals("Found a SSRM-2 in RARM", "Streak SRM 2", m.getName());
+                    assertNotEquals("Found SSRM-2 ammo in RARM", "Streak SRM 2 Ammo", m.getName());
                     break;
                 case Mech.LOC_LARM:
                     if ("Jump Jet".equals(m.getName())) {
@@ -268,9 +268,9 @@ public class TdbFileTest {
                     }
                     
                     assertFalse("Found a Heat Sink in LARM", m.getName().contains("Heat Sink"));
-                    assertFalse("Found a Medium Laser in LARM", "Medium Laser".equals(m.getName()));
-                    assertFalse("Found a SSRM-2 in LARM", "Streak SRM 2".equals(m.getName()));
-                    assertFalse("Found SSRM-2 ammo in LARM", "Streak SRM 2 Ammo".equals(m.getName()));
+                    assertNotEquals("Found a Medium Laser in LARM", "Medium Laser", m.getName());
+                    assertNotEquals("Found a SSRM-2 in LARM", "Streak SRM 2", m.getName());
+                    assertNotEquals("Found SSRM-2 ammo in LARM", "Streak SRM 2 Ammo", m.getName());
                     break;
                 case Mech.LOC_RLEG:
                     if ("Jump Jet".equals(m.getName())) {
@@ -278,9 +278,9 @@ public class TdbFileTest {
                     }
                     
                     assertFalse("Found a Heat Sink in RLEG", m.getName().contains("Heat Sink"));
-                    assertFalse("Found a Medium Laser in RLEG", "Medium Laser".equals(m.getName()));
-                    assertFalse("Found a SSRM-2 in RLEG", "Streak SRM 2".equals(m.getName()));
-                    assertFalse("Found SSRM-2 ammo in RLEG", "Streak SRM 2 Ammo".equals(m.getName()));
+                    assertNotEquals("Found a Medium Laser in RLEG", "Medium Laser", m.getName());
+                    assertNotEquals("Found a SSRM-2 in RLEG", "Streak SRM 2", m.getName());
+                    assertNotEquals("Found SSRM-2 ammo in RLEG", "Streak SRM 2 Ammo", m.getName());
                     break;
                 case Mech.LOC_LLEG:
                     if ("Jump Jet".equals(m.getName())) {
@@ -288,9 +288,9 @@ public class TdbFileTest {
                     }
                     
                     assertFalse("Found a Heat Sink in LLEG", m.getName().contains("Heat Sink"));
-                    assertFalse("Found a Medium Laser in LLEG", "Medium Laser".equals(m.getName()));
-                    assertFalse("Found a SSRM-2 in LLEG", "Streak SRM 2".equals(m.getName()));
-                    assertFalse("Found SSRM-2 ammo in LLEG", "Streak SRM 2 Ammo".equals(m.getName()));
+                    assertNotEquals("Found a Medium Laser in LLEG", "Medium Laser", m.getName());
+                    assertNotEquals("Found a SSRM-2 in LLEG", "Streak SRM 2", m.getName());
+                    assertNotEquals("Found SSRM-2 ammo in LLEG", "Streak SRM 2 Ammo", m.getName());
                     break;
             }
         }

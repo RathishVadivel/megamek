@@ -318,9 +318,7 @@ public class MultiTargetFireControl extends FireControl {
         }
         
         if (alphaStrikeHeat < shooter.getHeatCapacity() - shooter.getHeat() + heatCapacityModifier) {
-            for (WeaponFireInfo shot : shotList) {
-                retVal.add(shot);
-            }
+            retVal.addAll(shotList);
             
             return retVal;
         }

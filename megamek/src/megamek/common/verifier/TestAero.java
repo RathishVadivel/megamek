@@ -626,27 +626,24 @@ public class TestAero extends TestEntity {
     public String printWeightMisc() {
         double weight = getWeightMisc();
         if (weight > 0) {
-            String retVal = StringUtil.makeLength(
+            return StringUtil.makeLength(
                     "VSTOL equipment:", getPrintSize() - 5) + makeWeightString(weight) +
                     "\n";
-            return retVal;
         }
         return "";
     }
 
     @Override
     public String printWeightControls() {
-        String retVal = StringUtil.makeLength(
+        return StringUtil.makeLength(
                 aero.getCockpitTypeString() + ":", getPrintSize() - 5) + makeWeightString(getWeightControls()) +
                 "\n";
-        return retVal;
     }
         
     public String printWeightFuel() {
-        String retVal = StringUtil.makeLength(
+        return StringUtil.makeLength(
                 "Fuel: ", getPrintSize() - 5) + makeWeightString(getWeightFuel()) +
                 "\n";
-        return retVal;
     }
 
     public Aero getAero() {

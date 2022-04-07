@@ -75,9 +75,9 @@ public class ComputeECMTest {
 
         // Test no ECM Info
         ecmInfo = archer.getECMInfo();
-        TestCase.assertEquals(null, ecmInfo);
+        TestCase.assertNull(ecmInfo);
         eccmInfo = archer.getECCMInfo();
-        TestCase.assertEquals(null, eccmInfo);
+        TestCase.assertNull(eccmInfo);
            
         /*********************************************************************/
         // Add ECM        
@@ -97,7 +97,7 @@ public class ComputeECMTest {
         ecmInfo = archer.getECMInfo();
         TestCase.assertEquals(testInfoECM, ecmInfo);
         eccmInfo = archer.getECCMInfo();
-        TestCase.assertEquals(null, eccmInfo);
+        TestCase.assertNull(eccmInfo);
         
         /*********************************************************************/
         // Change mode from ECM to ECCM
@@ -116,7 +116,7 @@ public class ComputeECMTest {
         testInfoECCM = new ECMInfo(6, pos, mockPlayer, 0, 0);
         testInfoECCM.setECCMStrength(1);
         ecmInfo = archer.getECMInfo();
-        TestCase.assertEquals(null, ecmInfo);
+        TestCase.assertNull(ecmInfo);
         eccmInfo = archer.getECCMInfo();
         TestCase.assertEquals(testInfoECCM, eccmInfo);
         
@@ -258,44 +258,44 @@ public class ComputeECMTest {
         //  Shoud be affected by ECM, no Angel, no ECCM
         boolean result;
         result = ComputeECM.isAffectedByECM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Basic ECM for Player
         //  Enemy has ECM, Player has ECM
         //  Shoud be affected by ECM, no Angel, no ECCM
         Mockito.when(ae.getECMInfo()).thenReturn(aeECM);
         result = ComputeECM.isAffectedByECM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Basic Angel ECM for Player
         //  Enemy has ECM, Player has Angel ECM
         //  Shoud be affected by ECM, no Angel, no ECCM
         Mockito.when(ae.getECMInfo()).thenReturn(aeAngelECM);
         result = ComputeECM.isAffectedByECM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Basic ECCM for Player
         //  Enemy has ECM, Player has ECCM
         //  Shoud not be affected by ECM, no Angel, no ECCM
         Mockito.when(ae.getECCMInfo()).thenReturn(aeECCM);
         result = ComputeECM.isAffectedByECM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Basic Angel ECCM for Player
         //  Enemy has ECM, Player has Angel ECCM
@@ -303,11 +303,11 @@ public class ComputeECMTest {
         Mockito.when(ae.getECMInfo()).thenReturn(aeAngelECM);
         Mockito.when(ae.getECCMInfo()).thenReturn(aeAngelECCM);
         result = ComputeECM.isAffectedByECM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         
         // Add some Angel ECM to eliminate the ECCM
         enemyPos = new Coords(4, 4);
@@ -316,11 +316,11 @@ public class ComputeECMTest {
         entitiesVector.add(additionalEnemy);
         
         result = ComputeECM.isAffectedByECM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
 
         
@@ -334,44 +334,44 @@ public class ComputeECMTest {
         // Basic Angel ECM Test
         // Enemy has Angel ECM, Player has no EC(C)M 
         result = ComputeECM.isAffectedByECM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);    
+        TestCase.assertFalse(result);
         
         // Basic Angel ECM for Player
         //  Enemy has Angel ECM, Player has ECM
         //  Shoud be affected by ECM, Angel, no ECCM
         Mockito.when(ae.getECMInfo()).thenReturn(aeECM);
         result = ComputeECM.isAffectedByECM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Basic Angel ECM for Player
         //  Enemy has Angel ECM, Player has Angel ECM
         //  Shoud be affected by ECM, no Angel, no ECCM
         Mockito.when(ae.getECMInfo()).thenReturn(aeAngelECM);
         result = ComputeECM.isAffectedByECM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Basic ECCM for Player
         //  Enemy has Angel ECM, Player has ECCM
         //  Shoud be affected by ECM, Angel, no ECCM
         Mockito.when(ae.getECCMInfo()).thenReturn(aeECCM);
         result = ComputeECM.isAffectedByECM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Basic Angel ECCM for Player
         //  Enemy has Angel ECM, Player has Angel ECCM
@@ -379,11 +379,11 @@ public class ComputeECMTest {
         Mockito.when(ae.getECMInfo()).thenReturn(aeAngelECM);
         Mockito.when(ae.getECCMInfo()).thenReturn(aeAngelECCM);
         result = ComputeECM.isAffectedByECM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Add in another enemy basic ECM
         enemyPos = new Coords(4, 4);
@@ -392,22 +392,22 @@ public class ComputeECMTest {
         entitiesVector.add(additionalEnemy);
         
         result = ComputeECM.isAffectedByECM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Replace basic ECM with Angel
         enemyECMInfo = new ECMInfo(6, enemyPos, mockEnemy, 0, 1);
         Mockito.when(additionalEnemy.getECMInfo()).thenReturn(enemyECMInfo);
         
         result = ComputeECM.isAffectedByECM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Multiple enemy ECM, one player Angel ECCM
         Mockito.when(ae.getECCMInfo()).thenReturn(aeAngelECCM);
@@ -418,11 +418,11 @@ public class ComputeECMTest {
         entitiesVector.add(additionalEnemy);
         Mockito.when(mockGame.getEntitiesVector()).thenReturn(entitiesVector);
         result = ComputeECM.isAffectedByECM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, aePos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, aePos);
-        TestCase.assertEquals(true, result);        
+        TestCase.assertTrue(result);
 
     }
     
@@ -508,44 +508,44 @@ public class ComputeECMTest {
         //  Shoud be affected by ECM, no Angel, no ECCM
         boolean result;
         result = ComputeECM.isAffectedByECM(ae, aePos, targetPos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Basic ECM for Player
         //  Enemy has ECM, Player has ECM
         //  Shoud be affected by ECM, no Angel, no ECCM
         Mockito.when(ae.getECMInfo()).thenReturn(aeECM);
         result = ComputeECM.isAffectedByECM(ae, aePos, targetPos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Basic Angel ECM for Player
         //  Enemy has ECM, Player has Angel ECM
         //  Shoud be affected by ECM, no Angel, no ECCM
         Mockito.when(ae.getECMInfo()).thenReturn(aeAngelECM);
         result = ComputeECM.isAffectedByECM(ae, aePos, targetPos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Basic ECCM for Player
         //  Enemy has ECM, Player has ECCM
         //  Shoud not be affected by ECM, no Angel, no ECCM
         Mockito.when(ae.getECCMInfo()).thenReturn(aeECCM);
         result = ComputeECM.isAffectedByECM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Basic Angel ECCM for Player
         //  Enemy has ECM, Player has Angel ECCM
@@ -553,11 +553,11 @@ public class ComputeECMTest {
         Mockito.when(ae.getECMInfo()).thenReturn(aeAngelECM);
         Mockito.when(ae.getECCMInfo()).thenReturn(aeAngelECCM);
         result = ComputeECM.isAffectedByECM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, targetPos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         
         // Add some Angel ECM to eliminate the ECCM
         enemyPos = new Coords(4, 4);
@@ -566,11 +566,11 @@ public class ComputeECMTest {
         entitiesVector.add(additionalEnemy);
         
         result = ComputeECM.isAffectedByECM(ae, aePos, targetPos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
 
         
@@ -584,44 +584,44 @@ public class ComputeECMTest {
         // Basic Angel ECM Test
         // Enemy has Angel ECM, Player has no EC(C)M 
         result = ComputeECM.isAffectedByECM(ae, aePos, targetPos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, targetPos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);    
+        TestCase.assertFalse(result);
         
         // Basic Angel ECM for Player
         //  Enemy has Angel ECM, Player has ECM
         //  Shoud be affected by ECM, Angel, no ECCM
         Mockito.when(ae.getECMInfo()).thenReturn(aeECM);
         result = ComputeECM.isAffectedByECM(ae, aePos, targetPos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, targetPos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Basic Angel ECM for Player
         //  Enemy has Angel ECM, Player has Angel ECM
         //  Shoud be affected by ECM, no Angel, no ECCM
         Mockito.when(ae.getECMInfo()).thenReturn(aeAngelECM);
         result = ComputeECM.isAffectedByECM(ae, aePos, targetPos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, targetPos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Basic ECCM for Player
         //  Enemy has Angel ECM, Player has ECCM
         //  Shoud be affected by ECM, Angel, no ECCM
         Mockito.when(ae.getECCMInfo()).thenReturn(aeECCM);
         result = ComputeECM.isAffectedByECM(ae, aePos, targetPos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, targetPos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Basic Angel ECCM for Player
         //  Enemy has Angel ECM, Player has Angel ECCM
@@ -629,11 +629,11 @@ public class ComputeECMTest {
         Mockito.when(ae.getECMInfo()).thenReturn(aeAngelECM);
         Mockito.when(ae.getECCMInfo()).thenReturn(aeAngelECCM);
         result = ComputeECM.isAffectedByECM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Add in another enemy basic ECM
         enemyPos = new Coords(4, 4);
@@ -642,22 +642,22 @@ public class ComputeECMTest {
         entitiesVector.add(additionalEnemy);
         
         result = ComputeECM.isAffectedByECM(ae, aePos, targetPos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         
         // Replace basic ECM with Angel
         enemyECMInfo = new ECMInfo(6, enemyPos, mockEnemy, 0, 1);
         Mockito.when(additionalEnemy.getECMInfo()).thenReturn(enemyECMInfo);
         
         result = ComputeECM.isAffectedByECM(ae, aePos, targetPos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, targetPos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, targetPos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
 
         // Test whether ECCM range is working properly, on acccount of bug #4577
         // Basic ECCM for Player
@@ -679,11 +679,11 @@ public class ComputeECMTest {
         Mockito.when(ae.getECCMInfo()).thenReturn(aeECCM);
         Mockito.when(ae.getECMInfo()).thenReturn(null);
         result = ComputeECM.isAffectedByECM(ae, aePos, ecm1Pos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
         result = ComputeECM.isAffectedByAngelECM(ae, aePos, ecm1Pos);
-        TestCase.assertEquals(false, result);
+        TestCase.assertFalse(result);
         result = ComputeECM.isAffectedByECCM(ae, aePos, ecm1Pos);
-        TestCase.assertEquals(true, result);
+        TestCase.assertTrue(result);
 
     }
     

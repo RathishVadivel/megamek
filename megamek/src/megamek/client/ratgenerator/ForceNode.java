@@ -402,14 +402,13 @@ public class ForceNode extends RulesetNode {
      */
     public String show() {
         if (null == desc) {
-            String sb = "Force Node [eschelon:" + eschelon + " predicates:" +
+            desc = "Force Node [eschelon:" + eschelon + " predicates:" +
                     predicates.entrySet().stream().map(e -> e.getKey() + "=" + e.getValue())
                             .collect(Collectors.joining(",")) +
                     " assertions:" +
                     assertions.entrySet().stream().map(e -> e.getKey() + "=" + e.getValue())
                             .collect(Collectors.joining(",")) +
                     "]";
-            desc = sb;
         }
         return desc;
     }

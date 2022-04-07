@@ -11045,8 +11045,8 @@ public abstract class Entity extends TurnOrdered implements Transporter, Targeta
             System.err.println(getDisplayName() + " in hex "
                                + HexTarget.coordsToId(getPosition())
                                + " is at invalid elevation: " + getElevation());
-            setElevation(0 - game.getBoard()
-                                 .getHex(getPosition()).depth());
+            setElevation(-game.getBoard()
+                    .getHex(getPosition()).depth());
             System.err.println("   moved to elevation " + getElevation());
             return true;
         }

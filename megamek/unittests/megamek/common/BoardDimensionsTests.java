@@ -91,30 +91,30 @@ public class BoardDimensionsTests {
     @Test
     public final void testEqualsObject() {
         BoardDimensions b = new BoardDimensions(10, 10);
-        assertTrue(b.equals(b));
+        assertEquals(b, b);
 
         Object x = new BoardDimensions(10, 10);
-        assertTrue(b.equals(x));
-        assertTrue(x.equals(b));
+        assertEquals(b, x);
+        assertEquals(x, b);
 
         BoardDimensions d = new BoardDimensions(10, 10);
-        assertTrue(b.equals(d));
-        assertTrue(d.equals(b));
+        assertEquals(b, d);
+        assertEquals(d, b);
     }
 
     @Test
     public final void testNotEqualsObject() {
         BoardDimensions b = new BoardDimensions(10, 10);
-        assertFalse(b.equals("10x10"));
-        assertFalse(b.equals(new BoardDimensions(10, 5)));
-        assertFalse(b.equals(new BoardDimensions(5, 10)));
+        assertNotEquals("10x10", b);
+        assertNotEquals(b, new BoardDimensions(10, 5));
+        assertNotEquals(b, new BoardDimensions(5, 10));
     }
 
     @Test
     public final void testClone() {
         BoardDimensions b = new BoardDimensions(10, 10);
-        assertFalse(b.clone() == b);
-        assertTrue(b.clone().equals(b));
+        assertNotSame(b.clone(), b);
+        assertEquals(b.clone(), b);
     }
 
     @Test

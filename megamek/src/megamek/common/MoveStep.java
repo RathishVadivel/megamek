@@ -1209,9 +1209,7 @@ public class MoveStep implements Serializable {
         int[] tempMv = entity.getVectors();
 
         mv = new int[]{0, 0, 0, 0, 0, 0};
-        for (int i = 0; i < 6; i++) {
-            mv[i] = tempMv[i];
-        }
+        System.arraycopy(tempMv, 0, mv, 0, 6);
 
         // if ASF get velocity
         if (entity.isAero()) {

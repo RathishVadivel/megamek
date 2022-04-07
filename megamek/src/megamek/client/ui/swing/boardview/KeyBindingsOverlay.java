@@ -94,9 +94,9 @@ public class KeyBindingsOverlay implements IDisplayable, IPreferenceChangeListen
             );
     
     /** The keybinds to be shown in the Board Editor */
-    private static final List<KeyCommandBind> BINDS_BOARD_EDITOR = Arrays.asList(
+    private static final List<KeyCommandBind> BINDS_BOARD_EDITOR = List.of(
             KeyCommandBind.HEX_COORDS
-            );
+    );
 
     private static final List<String> ADDTL_BINDS = Arrays.asList(
             Messages.getString("KeyBindingsDisplay.fixedBinds").split("\n"));

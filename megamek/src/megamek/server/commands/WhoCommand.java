@@ -47,12 +47,11 @@ public class WhoCommand extends ServerCommand {
     }
 
     private String getConnectionDescription(AbstractConnection conn, boolean includeIPAddress) {
-        String cb = conn.getId() + " : " +
+        return conn.getId() + " : " +
                 server.getPlayer(conn.getId()).getName() + ", " +
                 (includeIPAddress ? conn.getInetAddress() : "<hidden>") +
                 ", " + conn.hasPending() + ", " +
                 conn.bytesSent() +
                 ", " + conn.bytesReceived();
-        return cb;
     }
 }

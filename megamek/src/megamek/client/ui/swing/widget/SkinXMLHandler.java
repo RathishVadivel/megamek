@@ -46,7 +46,7 @@ public class SkinXMLHandler {
     public static String SKIN_HEADER;
 
     static {
-        String sb = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+        SKIN_HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<!--\n" +
                 "  This is the default skin for Megamek\n" +
                 "\n" +
@@ -63,7 +63,6 @@ public class SkinXMLHandler {
                 "-->\n" +
                 "<skin xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n" +
                 "    xsi:noNamespaceSchemaLocation=\"skinSchema.xsd\">\n";
-        SKIN_HEADER = sb;
     }
 
     /**

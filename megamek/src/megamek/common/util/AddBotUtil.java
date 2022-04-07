@@ -180,7 +180,7 @@ public class AddBotUtil {
         Optional<Player> possible = game.getPlayersVector().stream()
                 .filter(p -> p.getName().equals(playerName)).findFirst();
         if (possible.isEmpty()) {
-            message.append("No player with the name '" + playerName + "'.");
+            message.append("No player with the name '").append(playerName).append("'.");
             return null;
         } else if (!possible.get().isGhost()) {
             message.append("Player '" + playerName + "' is not a ghost.");

@@ -44,8 +44,7 @@ public abstract class GameEvent extends java.util.EventObject {
 
     @Override
     public String toString() {
-        String buff = getEventName() +
+        return getEventName() +
                 " game event ";
-        return buff;
     }
 }

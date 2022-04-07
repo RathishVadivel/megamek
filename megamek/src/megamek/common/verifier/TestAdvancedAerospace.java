@@ -657,18 +657,16 @@ public class TestAdvancedAerospace extends TestAero {
 
     @Override
     public String printWeightControls() {
-        String retVal = StringUtil.makeLength(
+        return StringUtil.makeLength(
                 "Control Systems:", getPrintSize() - 5) + makeWeightString(getWeightControls()) +
                 "\n";
-        return retVal;
     }
         
     @Override
     public String printWeightFuel() {
-        String retVal = StringUtil.makeLength(
+        return StringUtil.makeLength(
                 "Fuel: ", getPrintSize() - 5) + makeWeightString(getWeightFuel()) +
                 "\n";
-        return retVal;
     }
 
     @Override

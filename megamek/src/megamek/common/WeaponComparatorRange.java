@@ -46,7 +46,7 @@ public class WeaponComparatorRange implements Comparator<Mounted> {
                 if (obj1.isRearMounted())
                     return -1 * ascending;
                 else if (obj2.isRearMounted())
-                    return 1 * ascending;
+                    return ascending;
                 return 0;
             }
             int[] ranges1 = weap1.getRanges(obj1);
@@ -57,12 +57,12 @@ public class WeaponComparatorRange implements Comparator<Mounted> {
                 if (ranges1[r] < ranges2[r]) {
                     return -1 * ascending;
                 } else if (ranges1[r] > ranges2[r]) {
-                    return 1 * ascending;
+                    return ascending;
                 }
             }
             // If we get here, all ranges are equals, arbitrate with heat
             if (weap1.getHeat() > weap2.getHeat()) {
-                return 1 * ascending;
+                return ascending;
             } else if (weap1.getHeat() < weap2.getHeat()) {
                 return -1 * ascending;
             } else {

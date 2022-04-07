@@ -124,9 +124,7 @@ public class PreferencesNode {
         final Map<String, String> finalValues = new HashMap<>(getElements().size());
 
         // Use the values we had stored from initialization
-        for (final Map.Entry<String, String> initialValue : getInitialValues().entrySet()) {
-            finalValues.put(initialValue.getKey(), initialValue.getValue());
-        }
+        finalValues.putAll(getInitialValues());
 
         // Overwrite the initial values with values generated during this session
         for (final PreferenceElement wrapper : getElements().values()) {

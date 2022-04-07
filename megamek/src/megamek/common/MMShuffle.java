@@ -88,7 +88,8 @@ public class MMShuffle extends Roll {
 
         // Start off the report (this is all the report a single die needs).
 
-        String buffer = (this.one + this.two) +
+        // Return the string.
+        return (this.one + this.two) +
 
                 // Add the two "dice".
                 " (" +
@@ -96,9 +97,6 @@ public class MMShuffle extends Roll {
                 "+" +
                 this.two +
                 ")";
-
-        // Return the string.
-        return buffer;
     }
 
     /**
@@ -114,7 +112,8 @@ public class MMShuffle extends Roll {
 
         // Include the id.
 
-        String buffer = "Roll #" + this.id + " - range: [" + 1 +
+        // Return the string.
+        return "Roll #" + this.id + " - range: [" + 1 +
                 "," + 6 + "], result: " +
                 (this.one + this.two) +
 
@@ -129,9 +128,6 @@ public class MMShuffle extends Roll {
                 this.deal +
                 " of shuffle #" +
                 this.shuffle;
-
-        // Return the string.
-        return buffer;
     }
 
     /**

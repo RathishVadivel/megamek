@@ -121,9 +121,8 @@ public class GameCFREvent extends GameEvent {
 
     @Override
     public String toString() {
-        String buff = getEventName() +
+        return getEventName() +
                 " game event ";
-        return buff;
     }
 
     public int getCFRType() {

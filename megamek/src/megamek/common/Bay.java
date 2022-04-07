@@ -267,9 +267,7 @@ public class Bay implements Transporter, ITechnology {
     public List<Integer> getLoadedUnitIds() {
         // Return a copy of our list of troops.
         List<Integer> loaded = new ArrayList<>();
-        for (int id : troops) {
-            loaded.add(id);
-        }
+        loaded.addAll(troops);
         return loaded;
     }
 

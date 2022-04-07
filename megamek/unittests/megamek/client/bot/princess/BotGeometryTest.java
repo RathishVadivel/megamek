@@ -21,7 +21,7 @@ public class BotGeometryTest {
         
         List<Coords> resultingCoords = testCoords.allAtDistance(0);
         Assert.assertEquals(1, resultingCoords.size());
-        Assert.assertEquals(true, resultingCoords.contains(testCoords));
+        Assert.assertTrue(resultingCoords.contains(testCoords));
         
         // for a radius 1 donut, we expect to see 6 hexes.
         resultingCoords = testCoords.allAtDistance(1);
@@ -36,7 +36,7 @@ public class BotGeometryTest {
         
         Assert.assertEquals(6, resultingCoords.size());
         for (int x = 0; x < expectedCoords.size(); x++) {
-            Assert.assertEquals(true, resultingCoords.contains(expectedCoords.get(x)));
+            Assert.assertTrue(resultingCoords.contains(expectedCoords.get(x)));
         }
         
         // for a radius 2 donut we expect to see 12 hexes.
@@ -57,7 +57,7 @@ public class BotGeometryTest {
         expectedCoords.add(new Coords(-1, 1));
         Assert.assertEquals(12, resultingCoords.size());
         for (int x = 0; x < expectedCoords.size(); x++) {
-            Assert.assertEquals(true, resultingCoords.contains(expectedCoords.get(x)));
+            Assert.assertTrue(resultingCoords.contains(expectedCoords.get(x)));
         }
         
     }

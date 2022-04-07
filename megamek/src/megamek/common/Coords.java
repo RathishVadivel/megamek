@@ -293,10 +293,8 @@ public class Coords implements Serializable {
      */
     public String getBoardNum() {
 
-        String num = (getX() > -1 && getX() < 9 ? "0" : "") + (getX() + 1) +
+        return (getX() > -1 && getX() < 9 ? "0" : "") + (getX() + 1) +
                 (getY() > -1 && getY() < 9 ? "0" : "") + (getY() + 1);
-
-        return num;
     }
 
     /**

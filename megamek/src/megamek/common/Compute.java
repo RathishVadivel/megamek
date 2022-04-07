@@ -6497,9 +6497,7 @@ public class Compute {
                 continue;
             }
             // now lets add all the entities here
-            for (Entity en : game.getEntitiesVector(c)) {
-                entities.add(en);
-            }
+            entities.addAll(game.getEntitiesVector(c));
         }
         return entities;
     }
