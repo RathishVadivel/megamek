@@ -38,6 +38,7 @@ import org.apache.logging.log4j.LogManager;
 import java.io.Serializable;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -2620,9 +2621,9 @@ public class Game implements Serializable {
     public void end(int winner, int winnerTeam) {
         setVictoryPlayerId(winner);
         setRating(winner, winnerTeam);
+        //getPlayersStandings();
         setVictoryTeam(winnerTeam);
         processGameEvent(new GameEndEvent(this));
-
     }
 
     /**
@@ -2691,7 +2692,6 @@ public class Game implements Serializable {
      * @param winner Id of player who won
      * @param winningTeam Id of team who won
      *
-     *
      */
     private void setRating(int winner, int winningTeam){
         Enumeration<Player> iter = getPlayers();
@@ -2711,6 +2711,14 @@ public class Game implements Serializable {
         }
     }
 
+    /**
+     * @return A Player list ranked by their rating from best to worst
+     */
+
+    public List<Player> getPlayersStandings(){
+        return players.stream().sorted(Comparator.comparing(Player::getRating).reversed())
+                .collect(Collectors.toList());
+    };
     /**
      * Get all <code>Entity</code>s that pass the given selection criteria.
      *
